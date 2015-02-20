@@ -27,8 +27,27 @@
     = csrf_meta_tags
 
   %body
-    .flash-container
-      - flash.each do |key, value|
-        .flash{class: "#{key}"} #{value}
-    = yield
+    %nav.top-bar{data: {topbar: true}, role: 'navigation'}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{href: admin_path} Weird Catalog
+
+      %section.top-bar-section
+        %ul.right
+          - if signed_in?
+            %li
+              %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
+          - else
+            %li
+              %a{href: sign_in_path} Sign In
+
+    .row
+      .columns.small-12
+        .flash-container
+          - flash.each do |key, value|
+            .flash{class: "#{key}"} #{value}
+    .row
+      .columns.small-12
+        = yield
     = javascript_include_tag 'application'

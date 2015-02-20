@@ -30,4 +30,6 @@ end
 
 group :development do
   gem 'foreman'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end

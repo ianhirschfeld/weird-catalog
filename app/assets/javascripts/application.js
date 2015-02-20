@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //
-//= require vendor/modernizer
+//= require vendor/modernizr
 //= require foundation
 //
 //= require main
