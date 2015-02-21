@@ -11,7 +11,7 @@
     %a.button{href: new_admin_catalog_item_path} + Add Catalog Item
 
     - if @items.count > 0
-      %table
+      %table.admin-table
         %thead
           %tr
             %th Image
@@ -22,9 +22,10 @@
         %tbody
           - @items.each do |item|
             %tr
-              %td &nbsp;
-              %td
-                %a{href: edit_admin_catalog_item_path(item.id)} #{item.name}
+              %td.admin-catalog-item-image-cell
+                %a{href: edit_admin_catalog_item_path(item.id)}
+                  = image_tag item.feature_image.url(:large), class: 'catalog-item-image'
+              %td #{item.name}
               %td
                 %a{href: item.url, target: '_blank'} Visit
               %td #{item.created_at.strftime("%Y-%m-%d")}

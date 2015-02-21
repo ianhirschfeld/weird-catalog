@@ -52,7 +52,9 @@ class Admin::CatalogItemsController < ProtectedController
       :url,
       :creator,
       :catalog_category_id,
-      :released_at
+      :released_at,
+      :feature_image,
+      :upload_url
     )
   end
 
