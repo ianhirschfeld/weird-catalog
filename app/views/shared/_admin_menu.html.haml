@@ -1,0 +1,9 @@
+- if signed_in?
+  %li
+    %label #{current_user.email}
+  %li.divider
+  %li
+    %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
+- else
+  %li
+    %a{href: sign_in_path} Sign In

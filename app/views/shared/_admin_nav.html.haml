@@ -1,20 +1,24 @@
-%nav.top-bar{data: {topbar: true}, role: 'navigation'}
+%nav.top-bar.hide-for-small{data: {topbar: true}, role: 'navigation'}
   %ul.title-area
     %li.name
-      %h1
-        %a{href: admin_path} Weird Catalog
-    %li.toggle-topbar.menu-icon
-      %a{href: '#'}
-        %span
 
   %section.top-bar-section
+    %ul.left
+      = render 'shared/admin_menu'
+
     %ul.right
-      - if signed_in?
-        %li
-          %a{href: '#'} #{current_user.email}
-        %li.divider
-        %li
-          %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
-      - else
-        %li
-          %a{href: sign_in_path} Sign In
+      %li.name
+        %h1
+          %a{href: root_path} Weird Catalog
+
+%nav.tab-bar.show-for-small
+  %section.left-small
+    %a.left-off-canvas-toggle.menu-icon{href: '#'}
+      %span
+  %section.tab-bar-section.right
+    %h1
+      %a{href: root_path} Weird Catalog
+
+%aside.left-off-canvas-menu
+  %ul.off-canvas-list
+    = render 'shared/admin_menu'

@@ -1,7 +1,67 @@
 !!!
 %html
   = render 'shared/head'
-
   %body
-    = yield
-    = javascript_include_tag 'application'
+    .off-canvas-wrap{data: {offcanvas: true}}
+      .inner-wrap
+        %nav.top-bar.hide-for-small{data: {topbar: true}, role: 'navigation'}
+          %ul.title-area
+            %li.name
+
+          %section.top-bar-section
+            %ul.left
+              %li
+                %label Category:
+              %li.has-dropdown
+                %a{href: '#'} All
+                %ul.dropdown
+                  %li
+                    %a{href: '#'} All
+                  - @categories.each do |category|
+                    %li
+                      %a{href: '#'} #{category.name}
+
+              - if signed_in? && current_user.admin?
+                %li.divider
+                %li
+                  %a{href: admin_path} Admin Portal
+                %li.divider
+                %li
+                  %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
+                %li.divider
+
+
+            %ul.right
+              %li.name
+                %h1
+                  %a{href: '#'} Weird Catalog
+
+        %nav.tab-bar.show-for-small
+          %section.left-small
+            %a.left-off-canvas-toggle.menu-icon{href: '#'}
+              %span
+          %section.tab-bar-section.right
+            %h1
+              %a{href: '#'} Weird Catalog
+
+        %aside.left-off-canvas-menu
+          %ul.off-canvas-list
+            %li
+              %label Category:
+            %li
+              %li
+                %a{href: '#'} All
+              - @categories.each do |category|
+                %li
+                  %a{href: '#'} #{category.name}
+            - if signed_in? && current_user.admin?
+              %li
+                %label Admin
+              %li
+                %a{href: admin_path} Admin Portal
+              %li
+                %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
+
+        = yield
+        %a.exit-off-canvas{href: '#'}
+        = javascript_include_tag 'application'

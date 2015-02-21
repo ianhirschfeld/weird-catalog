@@ -1,11 +1,13 @@
 !!!
 %html
   = render 'shared/head'
-
   %body
-    = render 'shared/admin_nav'
-    = render 'shared/flash'
-    .row
-      .columns.small-12
-        = yield
-    = javascript_include_tag 'application'
+    .off-canvas-wrap{data: {offcanvas: true}}
+      .inner-wrap
+        = render 'shared/admin_nav'
+        = render 'shared/flash'
+        .row
+          .columns.small-12
+            = yield
+        %a.exit-off-canvas{href: '#'}
+        = javascript_include_tag 'application'
