@@ -1,0 +1,12 @@
+%ul.breadcrumbs
+  %li
+    %a{href: admin_path} Portal
+  %li
+    %a{href: admin_catalog_categories_path} Catalog Categories
+  %li.current
+    %a{href: new_admin_catalog_category_path} New
+
+.row
+  .columns.small-12
+    %h2 New Catalog Category
+    = render 'form', category: @category

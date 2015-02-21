@@ -5,5 +5,7 @@
   %body
     = render 'shared/admin_nav'
     = render 'shared/flash'
-    = yield
+    .row
+      .columns.small-12
+        = yield
     = javascript_include_tag 'application'

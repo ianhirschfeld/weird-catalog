@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get :admin, controller: :admin, action: :show
   namespace :admin do
+    resources :catalog_items
+    resources :catalog_categories
   end
 
   if Rails.env.development?

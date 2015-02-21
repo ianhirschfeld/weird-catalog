@@ -1,0 +1,12 @@
+%ul.breadcrumbs
+  %li
+    %a{href: admin_path} Portal
+  %li
+    %a{href: admin_catalog_categories_path} Catalog Categories
+  %li.current
+    %a{href: edit_admin_catalog_category_path} Edit
+
+.row
+  .columns.small-12
+    %h2 Edit Catalog Category: #{@category.name}
+    = render 'form', category: @category

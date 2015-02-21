@@ -1,0 +1,5 @@
+= simple_form_for [:admin, category] do |f|
+  = f.input :name, as: :string
+  = f.button :submit
+  &nbsp;&nbsp;&nbsp;
+  %a.button.tiny.secondary{href: admin_catalog_categories_path} Cancel

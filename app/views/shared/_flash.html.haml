@@ -1,0 +1,12 @@
+.row.flash-container
+  .columns.small-12
+    - flash.each do |key, value|
+      - if value.is_a?(Hash)
+        - value.each do |k, v|
+          .flash.alert-box{data: {alert: true}}
+            #{k} #{v[0]}
+            %a.close{href: '#'} &times;
+      - else
+        .flash.alert-box{data: {alert: true}}
+          #{value}
+          %a.close{href: '#'} &times;
