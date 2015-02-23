@@ -1,3 +1,5 @@
+$image-max-width: 360px;
+$image-max-height: 202px;
 $anim-speed: .3s;
 
 html {
@@ -62,15 +64,15 @@ html {
 }
 
 .catalog-item-container {
-  width: 100%;
-  max-width: 360px;
-  height: 202px;
+  width: 25%;
+  // max-width: $image-max-width;
+  height: $image-max-height;
   margin: 0;
   padding: 0;
   display: inline-block;
   overflow: hidden;
   position: relative;
-  background-color: #fff;
+  background-color: $wc-dark-pink;
   vertical-align: top;
 }
 
@@ -78,8 +80,8 @@ html {
   @include opacity(0);
   @include transition(opacity $anim-speed);
   width: 100%;
-  max-width: 360px;
-  height: 202px;
+  // max-width: $image-max-width;
+  height: $image-max-height;
   display: block;
   position: absolute;
   top: 0;
@@ -93,17 +95,20 @@ html {
 }
 
 .catalog-item-image {
-  @include transition(max-width $anim-speed);
-  @include translate(-50%,-50%);
-  max-width: 360px;
+  @include transition(background-size $anim-speed);
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
   z-index: 10;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: $image-max-width $image-max-height;
 
   .catalog-item-container:hover &,
   .catalog-item-container:focus & {
-    max-width: 540px;
+    background-size: ($image-max-width * 1.5) ($image-max-height * 1.5);
   }
 }
 
@@ -241,4 +246,22 @@ html {
 .catalog-item-twitter,
 .catalog-item-facebook {
   font-size: 22px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .catalog-item-container {
+    width: 33%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .catalog-item-container {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .catalog-item-container {
+    width: 100%;
+  }
 }
