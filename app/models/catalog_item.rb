@@ -4,7 +4,7 @@ class CatalogItem < ActiveRecord::Base
 
   has_attached_file :feature_image,
     styles: {
-      large: '720x432#'
+      large: '1080x608#'
     },
     convert_options: {
       large: '-quality 80 -strip'

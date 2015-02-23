@@ -11,6 +11,17 @@
           %section.top-bar-section
             %ul.left
               %li
+                %label Sort By:
+              %li.has-dropdown.sort-by-dropdown
+                %a{href: '#'} Date Added
+                %ul.dropdown
+                  %li
+                    %a{href: '#'} Date Added
+                  %li
+                    %a{href: '#'} Release Date
+                  %li
+                    %a{href: '#'} Alphabetical
+              %li
                 %label Category:
               %li.has-dropdown
                 %a{href: '#'} All
@@ -21,17 +32,14 @@
                     %li
                       %a{href: '#'} #{category.name}
 
+            %ul.right
               - if signed_in? && current_user.admin?
-                %li.divider
                 %li
                   %a{href: admin_path} Admin Portal
                 %li.divider
                 %li
                   %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
                 %li.divider
-
-
-            %ul.right
               %li.name
                 %h1
                   %a{href: '#'} Weird Catalog
@@ -64,4 +72,4 @@
 
         = yield
         %a.exit-off-canvas{href: '#'}
-        = javascript_include_tag 'application'
+        = render 'shared/footer'

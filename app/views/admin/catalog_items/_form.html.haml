@@ -9,7 +9,7 @@
   %ul.small-block-grid-2
     - if item.feature_image.exists?
       %li
-        = image_tag item.feature_image.url(:large), class: 'catalog-item-image'
+        = image_tag item.feature_image.url(:large), class: 'admin-catalog-item-image'
     %li
       = f.input :feature_image, as: :file
       = f.input :upload_url, as: :string

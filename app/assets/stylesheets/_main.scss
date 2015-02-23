@@ -1,7 +1,7 @@
-.tab-bar-section {
-  &.right {
-    text-align: right;
-  }
+$anim-speed: .3s;
+
+html {
+  -webkit-font-smoothing: antialiased;
 }
 
 .admin-table {
@@ -12,7 +12,233 @@
   width: 360px;
 }
 
-.catalog-item-image {
+.admin-catalog-item-image {
   width: 100%;
   max-width: 360px;
+}
+
+.top-bar-section {
+  label {
+    display: block;
+    color: $white;
+    font-weight: 500;
+    line-height: $topbar-height;
+    cursor: default;
+  }
+
+  .left {
+    padding-left: 18px;
+  }
+
+  .has-dropdown > a {
+    &:hover,
+    &:focus {
+      background-color: $wc-pink !important;
+      cursor: default;
+    }
+
+    &:after {
+      margin-top: -1.5px;
+      border-width: 6px;
+      border-color: $white transparent transparent transparent;
+    }
+  }
+}
+
+.tab-bar-section {
+  &.right {
+    text-align: right;
+  }
+}
+
+.sort-by-dropdown {
+  margin-right: 36px;
+}
+
+.catalog-items-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-item-container {
+  width: 100%;
+  max-width: 360px;
+  height: 202px;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  vertical-align: top;
+}
+
+.catalog-item-external {
+  @include opacity(0);
+  @include transition(opacity $anim-speed);
+  width: 100%;
+  max-width: 360px;
+  height: 202px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  .catalog-item-container:hover &,
+  .catalog-item-container:focus & {
+    @include opacity(1);
+  }
+}
+
+.catalog-item-image {
+  @include transition(max-width $anim-speed);
+  @include translate(-50%,-50%);
+  max-width: 360px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+
+  .catalog-item-container:hover &,
+  .catalog-item-container:focus & {
+    max-width: 540px;
+  }
+}
+
+.catalog-item-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background: rgba(0,0,0,0.85);
+}
+
+.catalog-item-info {
+  @include opacity(0);
+  @include translateY(-100%);
+  @include transition(all $anim-speed);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  text-align: center;
+  color: $white;
+
+  h3,
+  h4,
+  p {
+    margin: 0;
+    color: $white;
+  }
+
+  h3 {
+    font-size: rem-calc(24px);
+  }
+
+  h4 {
+    margin: 15px 0;
+    font-size: 1rem;
+    font-weight: $font-weight-normal;
+  }
+
+  p {
+    @include opacity(1);
+    @include transition(opacity $anim-speed);
+    font-size: rem-calc(18px);
+    font-weight: $font-weight-bold;
+
+    &:hover,
+    &:focus {
+      @include opacity(.5);
+    }
+  }
+
+  .catalog-item-container:hover &,
+  .catalog-item-container:focus & {
+    @include opacity(1);
+    @include translateY(-50%);
+  }
+}
+
+.catalog-item-internal {
+  @include opacity(0);
+  @include rotate(-45deg);
+  @include transition(opacity $anim-speed);
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -4px;
+  left: -19px;
+  z-index: 20;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 30px solid $white;
+
+  .icon-right-arrow {
+    @include rotate(-90deg);
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: -9px;
+    color: $black;
+  }
+
+  .catalog-item-container:hover &,
+  .catalog-item-container:focus & {
+    @include opacity(1);
+
+    &:hover,
+    &:focus {
+      @include opacity(.5);
+    }
+  }
+}
+
+.catalog-item-social {
+  @include opacity(0);
+  @include transition(opacity $anim-speed);
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  z-index: 20;
+  list-style: none;
+  line-height: 1;
+
+  li {
+    display: inline-block;
+
+    &:first-child {
+      margin-right: 9px;
+    }
+  }
+
+  a {
+    @include opacity(1);
+    @include transition(opacity $anim-speed);
+    color: $white;
+  }
+
+  .catalog-item-container:hover &,
+  .catalog-item-container:focus & {
+    @include opacity(1);
+
+    a {
+      &:hover,
+      &:focus {
+        @include opacity(.5);
+      }
+    }
+  }
+}
+
+.catalog-item-twitter,
+.catalog-item-facebook {
+  font-size: 22px;
 }
