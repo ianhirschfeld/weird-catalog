@@ -24,7 +24,7 @@
             %tr
               %td.admin-catalog-item-image-cell
                 %a{href: edit_admin_catalog_item_path(item.id)}
-                  = image_tag item.feature_image.url(:large), class: 'catalog-item-image'
+                  = image_tag item.feature_image.url(:large), class: 'admin-catalog-item-image'
               %td #{item.name}
               %td
                 %a{href: item.url, target: '_blank'} Visit
