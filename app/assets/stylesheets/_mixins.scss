@@ -1,0 +1,17 @@
+@function to-rem($size) {
+  @return ($size / $font-size) + rem;
+}
+
+@mixin alt-clearfix {
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin text-overflow {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}

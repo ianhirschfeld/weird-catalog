@@ -5,8 +5,7 @@
   = f.input :creator, as: :string
   = f.input :released_at, as: :date, html5: true
   = f.association :catalog_category
-
-  %ul.small-block-grid-2
+  %ul.list-reset.admin-catalog-item-image-upload
     - if item.feature_image.exists?
       %li
         = image_tag item.feature_image.url(:large), class: 'admin-catalog-item-image'
@@ -15,4 +14,4 @@
       = f.input :upload_url, as: :string
   = f.button :submit
   &nbsp;&nbsp;&nbsp;
-  %a.button.tiny.secondary{href: admin_catalog_items_path} Cancel
+  %a.button{href: admin_catalog_items_path} Cancel

@@ -1,0 +1,30 @@
+// Colors
+$white: #fff;
+$black: #000;
+$pink: #ef254f;
+$dark-pink: #da2148;
+
+$text-color: $white;
+
+// Fonts
+$font-family: "sofia-pro", Helvetica, sans-serif;
+$font-weight-normal: 300;
+$font-weight-medium: 500;
+$font-weight-bold: 900;
+$font-size: 14px;
+$text-line-height: 1.8;
+
+// Main
+$grid-unit-size: 18px;
+$grid-unit-size-half: $grid-unit-size / 2;
+$grid-unit-size-twice: $grid-unit-size * 2;
+$topbar-height: $grid-unit-size-twice;
+
+
+$image-max-width: 360px;
+$image-max-height: 202px;
+$anim-speed: .3s;
+
+
+// Admin
+$admin-page-width: 1000px;

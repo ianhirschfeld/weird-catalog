@@ -6,7 +6,6 @@
   %li.current
     %a{href: edit_admin_catalog_category_path} Edit
 
-.row
-  .columns.small-12
-    %h2 Edit Catalog Category: #{@category.name}
-    = render 'form', category: @category
+.admin-section
+  %h2 Edit Catalog Category: #{@category.name}
+  = render 'form', category: @category

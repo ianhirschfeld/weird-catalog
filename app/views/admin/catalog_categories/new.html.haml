@@ -6,7 +6,6 @@
   %li.current
     %a{href: new_admin_catalog_category_path} New
 
-.row
-  .columns.small-12
-    %h2 New Catalog Category
-    = render 'form', category: @category
+.admin-section
+  %h2 New Catalog Category
+  = render 'form', category: @category
