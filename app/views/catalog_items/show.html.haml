@@ -1,0 +1,24 @@
+.catalog-item-section
+  %a.catalog-item-image-link{href: @item.url, target: '_blank'}
+    = image_tag @item.feature_image(:large), alt: @item.name, class: 'catalog-item-image-show'
+  %h2 #{@item.name}
+  - if @item.catalog_category
+    %p
+      %strong Category:
+      #{@item.catalog_category.name}
+  %p
+    %strong Creator:
+    #{@item.creator}
+  %p
+    %strong Released:
+    #{@item.released_at.strftime('%B %-m, %Y')}
+  %h4 #{@item.description}
+  %h5
+    %a{href: @item.url, target: '_blank'}
+      Get Weird
+      %span.icon-right-arrow
+  %ul.catalog-item-social<>
+    %li<>
+      %a.catalog-item-twitter.icon-twitter-circled{href: '#'}
+    %li<>
+      %a.catalog-item-facebook.icon-facebook-circled{href: '#'}

@@ -1,5 +1,8 @@
 class CatalogItem < ActiveRecord::Base
 
+  extend FriendlyId
+
+  friendly_id :name
   attr_accessor :upload_url
 
   has_attached_file :feature_image,
@@ -17,6 +20,7 @@ class CatalogItem < ActiveRecord::Base
                         :description,
                         :url,
                         :released_at
+  validates :name, uniqueness: { case_sensitive: false }
   validates_attachment :feature_image, content_type: { content_type: /image/ }
 
   belongs_to :catalog_category

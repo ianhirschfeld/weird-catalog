@@ -5,27 +5,34 @@
     %header.topbar
       %nav
         %ul.list-reset.topbar-left
-          %li.no-margin
-            %span Sort By:
-          %li.has-dropdown.sort-by-dropdown
-            %a.dropdown-trigger{href: '#'} Date Added
-            %ul.list-reset.dropdown
-              %li
-                %a{href: '#'} Date Added
-              %li
-                %a{href: '#'} Release Date
-              %li
-                %a{href: '#'} Alphabetical
-          %li.no-margin
-            %span Category:
-          %li.has-dropdown.category-dropdown
-            %a.dropdown-trigger{href: '#'} All
-            %ul.list-reset.dropdown
-              %li
-                %a{href: '#'} All
-              - @categories.each do |category|
+          - if @item
+            %li
+              %strong
+                %a{href: root_path}
+                  %span.icon-right-arrow
+                  Full Catalog
+          - else
+            %li.no-margin
+              %span Sort By:
+            %li.has-dropdown.sort-by-dropdown
+              %a.dropdown-trigger{href: '#'} Date Added
+              %ul.list-reset.dropdown
                 %li
-                  %a{href: '#'} #{category.name}
+                  %a{href: '#'} Date Added
+                %li
+                  %a{href: '#'} Release Date
+                %li
+                  %a{href: '#'} Alphabetical
+            %li.no-margin
+              %span Category:
+            %li.has-dropdown.category-dropdown
+              %a.dropdown-trigger{href: '#'} All
+              %ul.list-reset.dropdown
+                %li
+                  %a{href: '#'} All
+                - @categories.each do |category|
+                  %li
+                    %a{href: '#'} #{category.name}
           - if signed_in? && current_user.admin?
             %li
               %a{href: admin_path} Admin Portal

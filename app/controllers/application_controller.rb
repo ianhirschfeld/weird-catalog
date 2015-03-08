@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  protected
+
+  def load_categories
+    @categories = CatalogCategory.order('name ASC')
+  end
+
 end

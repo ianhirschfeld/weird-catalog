@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :catalog_categories
   end
 
+  get 'ci/:id', to: 'catalog_items#show', as: :catalog_item
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

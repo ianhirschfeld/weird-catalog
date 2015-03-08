@@ -8,10 +8,10 @@
           .catalog-item-info
             %h3 #{item.name}
             %h4 #{item.description}
-            %p
+            %h5
               Get Weird
               %span.icon-right-arrow
-        %a.catalog-item-internal{href: '#'}
+        %a.catalog-item-internal{href: catalog_item_path(item)}
           %span.icon-right-arrow
         %ul.catalog-item-social<>
           %li<>

@@ -24,6 +24,7 @@ $grid-unit-size-twice: $grid-unit-size * 2;
 $topbar-height: $grid-unit-size-twice;
 $image-max-width: 360px;
 $image-max-height: 202px;
+$catalog-item-max-width: $image-max-width;
 
 // Z-Indexes
 $z-index-level-0: 1;
