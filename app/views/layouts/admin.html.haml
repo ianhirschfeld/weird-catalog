@@ -2,21 +2,7 @@
 %html
   = render 'shared/head'
   %body
-    %header.topbar
-      %nav
-        %ul.list-reset.topbar-left
-          - if signed_in?
-            %li<>
-              %span #{current_user.email}
-            %li<>
-              %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
-          - else
-            %li<>
-              %a{href: sign_in_path} Sign In
-
-        .topbar-right
-          %h1
-            %a{href: root_path} Weird Catalog
+    = render 'shared/admin_nav'
     = render 'shared/flash'
     = yield
     = render 'shared/footer'

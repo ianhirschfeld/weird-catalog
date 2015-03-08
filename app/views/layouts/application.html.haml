@@ -2,74 +2,39 @@
 %html
   = render 'shared/head'
   %body
-    .off-canvas-wrap{data: {offcanvas: true}}
-      .inner-wrap
-        %nav.top-bar.hide-for-small{data: {topbar: true}, role: 'navigation'}
-          %ul.title-area
-            %li.name
-
-          %section.top-bar-section
-            %ul.left
+    %header.topbar
+      %nav
+        %ul.list-reset.topbar-left
+          %li.no-margin
+            %span Sort By:
+          %li.has-dropdown.sort-by-dropdown
+            %a.dropdown-trigger{href: '#'} Date Added
+            %ul.list-reset.dropdown
               %li
-                %label Sort By:
-              %li.has-dropdown.sort-by-dropdown
                 %a{href: '#'} Date Added
-                %ul.dropdown
-                  %li
-                    %a{href: '#'} Date Added
-                  %li
-                    %a{href: '#'} Release Date
-                  %li
-                    %a{href: '#'} Alphabetical
               %li
-                %label Category:
-              %li.has-dropdown
-                %a{href: '#'} All
-                %ul.dropdown
-                  %li
-                    %a{href: '#'} All
-                  - @categories.each do |category|
-                    %li
-                      %a{href: '#'} #{category.name}
-
-            %ul.right
-              - if signed_in? && current_user.admin?
-                %li
-                  %a{href: admin_path} Admin Portal
-                %li.divider
-                %li
-                  %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
-                %li.divider
-              %li.name
-                %h1
-                  %a{href: '#'} Weird Catalog
-
-        %nav.tab-bar.show-for-small
-          %section.left-small
-            %a.left-off-canvas-toggle.menu-icon{href: '#'}
-              %span
-          %section.tab-bar-section.right
-            %h1
-              %a{href: '#'} Weird Catalog
-
-        %aside.left-off-canvas-menu
-          %ul.off-canvas-list
-            %li
-              %label Category:
-            %li
+                %a{href: '#'} Release Date
+              %li
+                %a{href: '#'} Alphabetical
+          %li.no-margin
+            %span Category:
+          %li.has-dropdown.category-dropdown
+            %a.dropdown-trigger{href: '#'} All
+            %ul.list-reset.dropdown
               %li
                 %a{href: '#'} All
               - @categories.each do |category|
                 %li
                   %a{href: '#'} #{category.name}
-            - if signed_in? && current_user.admin?
-              %li
-                %label Admin
-              %li
-                %a{href: admin_path} Admin Portal
-              %li
-                %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
+          - if signed_in? && current_user.admin?
+            %li
+              %a{href: admin_path} Admin Portal
+            %li
+              %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
 
-        = yield
-        %a.exit-off-canvas{href: '#'}
-        = render 'shared/footer'
+        .topbar-right
+          %h1
+            %a{href: root_path} Weird Catalog
+
+    = yield
+    = render 'shared/footer'

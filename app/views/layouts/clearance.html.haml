@@ -2,12 +2,8 @@
 %html
   = render 'shared/head'
   %body
-    .off-canvas-wrap{data: {offcanvas: true}}
-      .inner-wrap
-        = render 'shared/admin_nav'
-        = render 'shared/flash'
-        .row
-          .columns.small-12
-            = yield
-        %a.exit-off-canvas{href: '#'}
-        = render 'shared/footer'
+    = render 'shared/admin_nav'
+    = render 'shared/flash'
+    .admin-section
+      = yield
+    = render 'shared/footer'
