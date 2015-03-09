@@ -13,6 +13,7 @@ $font-weight-medium: 500;
 $font-weight-bold: 900;
 $font-size: 14px;
 $text-line-height: 1.8;
+$info-line-height: 1.4;
 
 // Admin
 $admin-page-width: 1000px;
@@ -25,6 +26,7 @@ $topbar-height: $grid-unit-size-twice;
 $image-max-width: 360px;
 $image-max-height: 202px;
 $catalog-item-max-width: $image-max-width;
+$info-section-max-width: 500px;
 
 // Z-Indexes
 $z-index-level-0: 1;
@@ -32,6 +34,8 @@ $z-index-level-1: 10;
 $z-index-level-2: 20;
 $z-index-level-3: 30;
 $z-index-level-4: 40;
+$z-index-level-5: 50;
 
 // Animation
+$anim-speed-fast: .2s;
 $anim-speed: .3s;

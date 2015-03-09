@@ -2,7 +2,8 @@
 %html
   = render 'shared/head'
   %body
-    = render 'shared/admin_nav'
+    = render 'shared/nav_admin'
     = render 'shared/flash'
-    = yield
+    .page-content
+      = yield
     = render 'shared/footer'

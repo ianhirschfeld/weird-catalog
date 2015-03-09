@@ -95,25 +95,39 @@ a {
   text-align: center;
 }
 
+.page-content {
+  padding-top: $topbar-height;
+}
+
 /*=============================================================================
   HEADER
 =============================================================================*/
 .topbar {
+  @include transition(height $anim-speed);
   height: $topbar-height;
   padding: 0 $grid-unit-size;
+  background: $pink;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-level-5;
 
   nav {
     @include alt-clearfix;
     line-height: $topbar-height;
   }
 
-  span,
-  a {
+  span:not(.blend),
+  h1 a,
+  li a {
     padding: 0 $grid-unit-size-half;
     display: block;
   }
 
-  a {
+  h1 a,
+  li a {
+    @include transition(background-color $anim-speed-fast);
     position: relative;
 
     &:hover,
@@ -122,7 +136,7 @@ a {
     }
   }
 
-  span,
+  span:not(.blend),
   strong {
     font-weight: $font-weight-medium;
   }
@@ -138,6 +152,8 @@ a {
 }
 
 .topbar-left {
+  @include opacity(1);
+  @include transition(opacity $anim-speed);
   float: left;
 
   > li {
@@ -153,7 +169,10 @@ a {
 }
 
 .topbar-right {
-  float: right;
+  @include transition(all $anim-speed);
+  position: absolute;
+  top: 0;
+  right: $grid-unit-size;
 }
 
 .dropdown-trigger {
@@ -164,7 +183,7 @@ a {
     position: absolute;
     top: 50%;
     right: 0;
-    border: inset 5px;
+    border: inset 6px;
     border-color: $white transparent transparent transparent;
     border-top-style: solid;
     margin-right: $grid-unit-size-half;
@@ -184,6 +203,96 @@ a {
 .has-dropdown.is-active {
   .dropdown {
     display: block;
+  }
+}
+
+.info-container {
+  @include opacity(0);
+  @include transition(all $anim-speed);
+  max-width: $info-section-max-width;
+  height: 0;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.info-section {
+  padding: $grid-unit-size-half 0;
+  text-align: center;
+  font-size: to-rem(12px);
+  line-height: $info-line-height;
+
+  article {
+    font-size: to-rem(18px);
+  }
+
+  strong {
+    margin: $grid-unit-size 0;
+    display: block;
+    font-size: to-rem(18px);
+    font-weight: $font-weight-medium;
+  }
+
+  a {
+    font-weight: $font-weight-medium;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .blend {
+    font-weight: $font-weight-bold;
+    color: $pink;
+  }
+}
+
+.info-copyright {
+  max-width: 400px;
+  margin: $grid-unit-size auto;
+}
+
+.info-email-us {
+  margin-bottom: $grid-unit-size-half;
+  display: inline-block;
+}
+
+.info-triangle-up {
+  height: 20px;
+  display: block;
+
+  &:after {
+    width: 0;
+    height: 0;
+    margin-left: -6px;
+    display: block;
+    position: relative;
+    left: 50%;
+    border: inset 6px;
+    border-color: transparent transparent $white transparent;
+    border-bottom-style: solid;
+    content: "";
+  }
+
+  &:hover,
+  &:focus {
+    background: $dark-pink;
+  }
+}
+
+.topbar.is-open {
+  overflow: hidden;
+
+  .info-container {
+    @include opacity(1);
+  }
+
+  .topbar-left {
+    @include opacity(0);
+  }
+
+  h1 a {
+    background-color: transparent;
   }
 }
 

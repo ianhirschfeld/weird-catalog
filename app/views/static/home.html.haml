@@ -1,20 +1,19 @@
 %ul.catalog-items-list.list-reset<>
-  - 20.times do |i|
-    - @items.each do |item|
-      %li.catalog-item-container<>
-        .catalog-item-image{style: "background-image:url('#{item.feature_image(:large)}');"}
-        %a.catalog-item-external{href: item.url, target: '_blank'}<>
-          .catalog-item-overlay
-          .catalog-item-info
-            %h3 #{item.name}
-            %h4 #{item.description}
-            %h5
-              Get Weird
-              %span.icon-right-arrow
-        %a.catalog-item-internal{href: catalog_item_path(item)}
-          %span.icon-right-arrow
-        %ul.catalog-item-social<>
-          %li<>
-            %a.catalog-item-twitter.icon-twitter-circled{href: '#'}
-          %li<>
-            %a.catalog-item-facebook.icon-facebook-circled{href: '#'}
+  - @items.each do |item|
+    %li.catalog-item-container<>
+      .catalog-item-image{style: "background-image:url('#{item.feature_image(:large)}');"}
+      %a.catalog-item-external{href: item.url, target: '_blank'}<>
+        .catalog-item-overlay
+        .catalog-item-info
+          %h3 #{item.name}
+          %h4 #{item.description}
+          %h5
+            Get Weird
+            %span.icon-right-arrow
+      %a.catalog-item-internal{href: catalog_item_path(item)}
+        %span.icon-right-arrow
+      %ul.catalog-item-social<>
+        %li<>
+          %a.catalog-item-twitter.icon-twitter-circled{href: '#'}
+        %li<>
+          %a.catalog-item-facebook.icon-facebook-circled{href: '#'}

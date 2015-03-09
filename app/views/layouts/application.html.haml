@@ -2,46 +2,10 @@
 %html
   = render 'shared/head'
   %body
-    %header.topbar
-      %nav
-        %ul.list-reset.topbar-left
-          - if @item
-            %li
-              %strong
-                %a{href: root_path}
-                  %span.icon-right-arrow
-                  Full Catalog
-          - else
-            %li.no-margin
-              %span Sort By:
-            %li.has-dropdown.sort-by-dropdown
-              %a.dropdown-trigger{href: '#'} Date Added
-              %ul.list-reset.dropdown
-                %li
-                  %a{href: '#'} Date Added
-                %li
-                  %a{href: '#'} Release Date
-                %li
-                  %a{href: '#'} Alphabetical
-            %li.no-margin
-              %span Category:
-            %li.has-dropdown.category-dropdown
-              %a.dropdown-trigger{href: '#'} All
-              %ul.list-reset.dropdown
-                %li
-                  %a{href: '#'} All
-                - @categories.each do |category|
-                  %li
-                    %a{href: '#'} #{category.name}
-          - if signed_in? && current_user.admin?
-            %li
-              %a{href: admin_path} Admin Portal
-            %li
-              %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
-
-        .topbar-right
-          %h1
-            %a{href: root_path} Weird Catalog
-
-    = yield
+    - if @item
+      = render 'shared/nav_show'
+    - else
+      = render 'shared/nav'
+    .page-content
+      = yield
     = render 'shared/footer'

@@ -1,0 +1,16 @@
+%header.topbar
+  %nav
+    %ul.list-reset.topbar-left
+      %li
+        %strong
+          %a{href: root_path}
+            %span.icon-right-arrow
+            Full Catalog
+      - if signed_in? && current_user.admin?
+        %li
+          %a{href: admin_path} Admin Portal
+        %li
+          %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
+    .topbar-right
+      %h1
+        %a{href: root_path} Weird Catalog
