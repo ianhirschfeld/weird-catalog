@@ -1,5 +1,6 @@
 class Admin::CatalogItemsController < ProtectedController
 
+  before_action :set_is_admin_page
   before_action :load_model, only: [:edit, :update, :destroy]
 
   def index

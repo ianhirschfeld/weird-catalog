@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
     @categories = CatalogCategory.order('name ASC')
   end
 
+  def set_is_admin_page
+    @is_admin_page = true
+  end
+
 end
