@@ -25,6 +25,15 @@ class CatalogItem < ActiveRecord::Base
 
   belongs_to :catalog_category
 
+  def description_truncated(limit=140)
+    if description.length > limit
+      # -4 because of ellipses and zero-based index
+      description[0..limit-4].strip + '...'
+    else
+      description
+    end
+  end
+
   private
 
   def get_remote_image

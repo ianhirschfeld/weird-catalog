@@ -465,6 +465,7 @@ input[type=submit] {
     margin: 8px 0;
     font-size: 1rem;
     font-weight: $font-weight-normal;
+    line-height: $info-line-height;
   }
 
   h5 {
@@ -592,6 +593,7 @@ input[type=submit] {
   h4 {
     font-size: 1rem;
     font-weight: $font-weight-normal;
+    line-height: $info-line-height;
   }
 
   h5 {
