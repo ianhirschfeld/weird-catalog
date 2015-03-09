@@ -118,7 +118,7 @@ a {
     line-height: $topbar-height;
   }
 
-  span:not(.blend),
+  span:not(.blend):not(.icon-right-arrow),
   h1 a,
   li a {
     padding: 0 $grid-unit-size-half;
@@ -136,7 +136,7 @@ a {
     }
   }
 
-  span:not(.blend),
+  span:not(.blend):not(.icon-right-arrow),
   strong {
     font-weight: $font-weight-medium;
   }
@@ -650,6 +650,46 @@ input[type=submit] {
   @include border-radius(9px);
   max-width: $image-max-width;
   max-height: $image-max-height;
+}
+
+/*=============================================================================
+  EMPTY PAGES
+=============================================================================*/
+.empty-section {
+  @include translate(-50%, -50%);
+  width: 100%;
+  max-width: $empty-section-max-width;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  line-height: $info-line-height;
+
+  .img-container {
+    display: block;
+    margin-bottom: $grid-unit-size;
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.empty-inner {
+  max-width: $empty-inner-max-width;
+  margin: 0 auto;
+
+  h3 {
+    font-size: to-rem(24px);
+  }
+
+  p {
+    margin-top: $grid-unit-size;
+  }
+
+  strong {
+    font-weight: $font-weight-medium;
+  }
 }
 
 /*=============================================================================

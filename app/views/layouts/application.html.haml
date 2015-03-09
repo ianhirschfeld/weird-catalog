@@ -2,7 +2,7 @@
 %html
   = render 'shared/head'
   %body
-    - if @item
+    - if @item || @is_error_page
       = render 'shared/nav_show'
     - else
       = render 'shared/nav'
