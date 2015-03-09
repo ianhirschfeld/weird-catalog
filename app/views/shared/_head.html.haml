@@ -3,12 +3,17 @@
   %meta{content: 'IE=edge,chrome=1', 'http-equiv' => 'X-UA-Compatible'}
   %meta{name: 'description', content: 'A curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.'}
   %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
-
-  %meta{property: 'og:url', content: 'http://www.weirdcatalog.com'}
+  - if @item
+    %meta{property: 'og:url', content: catalog_item_url(@item)}
+    %meta{property: 'og:title', content: "#{@item.name} | Weird Catalog"}
+    %meta{property: 'og:description', content: @item.description}
+    %meta{property: 'og:image', content: @item.feature_image(:large)}
+  - else
+    %meta{property: 'og:url', content: 'http://www.weirdcatalog.com'}
+    %meta{property: 'og:title', content: 'Weird Catalog'}
+    %meta{property: 'og:description', content: 'A curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.'}
+    %meta{property: 'og:image', content: 'http://www.weirdcatalog.com/open_graph.png'}
   %meta{property: 'og:type', content: 'website'}
-  %meta{property: 'og:title', content: 'Weird Catalog'}
-  %meta{property: 'og:description', content: 'A curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.'}
-  %meta{property: 'og:image', content: 'http://www.weirdcatalog.com/open_graph.png'}
   %meta{property: 'fb:admins', content: '1325850192'}
   %meta{property: 'fb:admins', content: '682837756'}
 
