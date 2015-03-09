@@ -42,7 +42,7 @@ class Admin::CatalogCategoriesController < ProtectedController
   private
 
   def load_model
-    @category ||= CatalogCategory.find(params['id'])
+    @category ||= CatalogCategory.friendly.find(params['id'])
   end
 
   def catalog_category_params
