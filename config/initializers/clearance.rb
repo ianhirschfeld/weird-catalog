@@ -1,3 +1,5 @@
+require 'mail'
+
 Clearance::PasswordsController.layout 'clearance'
 Clearance::SessionsController.layout 'clearance'
 Clearance::UsersController.layout 'clearance'
