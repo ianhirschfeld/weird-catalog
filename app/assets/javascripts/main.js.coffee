@@ -11,8 +11,8 @@ $ ->
     $trigger = $('.dropdown-trigger', $this)
     $dropdown = $('.dropdown', $this)
 
-    triggerWidth = $trigger.width()
-    dropdownWidth = $dropdown.width()
+    triggerWidth = $trigger.outerWidth()
+    dropdownWidth = $dropdown.outerWidth()
 
     if triggerWidth > dropdownWidth
       $trigger.width triggerWidth
@@ -20,6 +20,9 @@ $ ->
     else
       $trigger.width dropdownWidth
       $dropdown.width dropdownWidth + parseInt($trigger.css('paddingLeft').replace('px', '')) * 2
+
+  $('.dropdown-trigger').click (event) ->
+    event.preventDefault()
 
   $('.dropdown-trigger').mouseenter ->
     $(this).parent().addClass 'is-active'

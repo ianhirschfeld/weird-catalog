@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get 'ci/:id', to: 'catalog_items#show', as: :catalog_item
+  get 'category/:category', to: 'static#home', as: :catalog_category
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

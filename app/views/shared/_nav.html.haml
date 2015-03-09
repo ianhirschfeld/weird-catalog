@@ -16,24 +16,42 @@
       %li.no-margin
         %span Sort By:
       %li.has-dropdown.sort-by-dropdown
-        %a.dropdown-trigger{href: '#'} Date Added
+        %a.dropdown-trigger{href: '#'} #{@current_sort_name}
         %ul.list-reset.dropdown
-          %li
-            %a{href: '#'} Date Added
-          %li
-            %a{href: '#'} Release Date
-          %li
-            %a{href: '#'} Alphabetical
+          - if @current_category
+            - if @current_sort != ''
+              %li
+                %a{href: catalog_category_path(@current_category)} Date Added
+            - if @current_sort != 'released_at'
+              %li
+                %a{href: catalog_category_path(@current_category, sortby: 'released_at')} Release Date
+            - if @current_sort != 'alphabetical'
+              %li
+                %a{href: catalog_category_path(@current_category, sortby: 'alphabetical')} Alphabetical
+          - else
+            - if @current_sort != ''
+              %li
+                %a{href: root_path} Date Added
+            - if @current_sort != 'released_at'
+              %li
+                %a{href: root_path(sortby: 'released_at')} Release Date
+            - if @current_sort != 'alphabetical'
+              %li
+                %a{href: root_path(sortby: 'alphabetical')} Alphabetical
       %li.no-margin
         %span Category:
       %li.has-dropdown.category-dropdown
-        %a.dropdown-trigger{href: '#'} All
+        %a.dropdown-trigger{href: '#'} #{@current_category ? @current_category.name : 'All'}
         %ul.list-reset.dropdown
-          %li
-            %a{href: '#'} All
-          - @categories.each do |category|
+          - if @current_category
+            - path = @current_sort.present? ? root_path(sortby: @current_sort) : root_path
             %li
-              %a{href: '#'} #{category.name}
+              %a{href: path} All
+          - @categories.each do |category|
+            - if @current_category.nil? || @current_category.slug != category.slug
+              %li
+                - path = @current_sort.present? ? catalog_category_path(category, sortby: @current_sort) : catalog_category_path(category)
+                %a{href: path} #{category.name}
       - if signed_in? && current_user.admin?
         %li
           %a{href: admin_path} Admin Portal
