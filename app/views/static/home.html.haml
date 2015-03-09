@@ -1,3 +1,4 @@
+- content_for :title, @current_category.name if @current_category
 - if @items.count > 0
   %ul.catalog-items-list.list-reset<>
     - @items.each do |item|

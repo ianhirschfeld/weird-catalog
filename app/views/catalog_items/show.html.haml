@@ -1,3 +1,4 @@
+- content_for :title, @item.name
 .catalog-item-section
   %a.catalog-item-image-link{href: @item.url, target: '_blank'}
     = image_tag @item.feature_image(:large), alt: @item.name, class: 'catalog-item-image-show'

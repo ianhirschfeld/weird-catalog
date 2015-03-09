@@ -1,25 +1,22 @@
 %head
   %meta{charset: 'utf-8'}
   %meta{content: 'IE=edge,chrome=1', 'http-equiv' => 'X-UA-Compatible'}
-  %meta{name: 'description', content: ''}
+  %meta{name: 'description', content: 'A curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.'}
   %meta{name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'}
-  %meta{name: 'apple-mobile-web-app-capable', content: 'yes'}
-  %meta{name: 'apple-mobile-web-app-title', content: 'Weird Catalog'}
-  %meta{name: 'apple-mobile-web-app-status-bar-style', content: 'black'}
 
-  -#%meta{property: 'og:url', content: 'http://www.weirdcatalog.com'}
-  -#%meta{property: 'og:type', content: 'website'}
-  -#%meta{property: 'og:title', content: 'Weird Catalog'}
-  -#%meta{property: 'og:description', content: ''}
-  -#%meta{property: 'og:image', content: ''}
+  %meta{property: 'og:url', content: 'http://www.weirdcatalog.com'}
+  %meta{property: 'og:type', content: 'website'}
+  %meta{property: 'og:title', content: 'Weird Catalog'}
+  %meta{property: 'og:description', content: 'A curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.'}
+  %meta{property: 'og:image', content: 'http://www.weirdcatalog.com/open_graph.png'}
+  %meta{property: 'fb:admins', content: '1325850192'}
+  %meta{property: 'fb:admins', content: '682837756'}
 
-  -#%link{rel: 'apple-touch-startup-image', href: '/startup.png', media: '(device-width: 320px)'}
-  -#%link{rel: 'apple-touch-startup-image', href: '/startup-iphone6.png', media: '(device-width: 375px)'}
-  -#%link{rel: 'apple-touch-icon', href: '/apple-touch-icon.png'}
-  -#%link{rel: 'shortcut icon', href: '/favicon.png', type: 'image/x-icon'}
-  -#%link{rel: 'icon', href: '/favicon.png', type: 'image/x-icon'}
+  %link{rel: 'apple-touch-icon', href: '/apple-touch-icon.png'}
+  %link{rel: 'shortcut icon', href: '/favicon.png', type: 'image/x-icon'}
+  %link{rel: 'icon', href: '/favicon.png', type: 'image/x-icon'}
 
-  %title Weird Catalog
+  %title #{yield(:title) + ' | ' if yield(:title).present?}Weird Catalog
 
   = stylesheet_link_tag 'application'
   = csrf_meta_tags
