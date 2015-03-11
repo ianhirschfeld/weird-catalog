@@ -49,5 +49,5 @@ $ ->
       $topbar.height $infoSection.outerHeight()
       $infoContainer.height $infoSection.outerHeight()
       $logoContainer.css
-        top: 4
+        top: 6
         right: ($win.outerWidth() / 2) + ($infoSection.outerWidth() / 2) - $logoContainer.outerWidth() + 5

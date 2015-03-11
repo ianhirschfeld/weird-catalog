@@ -29,7 +29,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  display: block;
   font-size: to-rem(18px);
+
+  a {
+    @include text-overflow;
+    width: 120px + $grid-unit-size-half * 2;
+    padding: 0 $grid-unit-size-half;
+    display: block;
+    background: image-url('weird_catalog_logo.svg') no-repeat center center;
+    background-size: 120px;
+
+    &:hover,
+    &:focus {
+      background-color: $dark-pink;
+    }
+
+    header.is-open & {
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
+    }
+  }
 }
 
 a {
@@ -119,13 +141,11 @@ a {
   }
 
   span:not(.blend):not(.icon-right-arrow),
-  h1 a,
   li a {
     padding: 0 $grid-unit-size-half;
     display: block;
   }
 
-  h1 a,
   li a {
     @include transition(background-color $anim-speed-fast);
     position: relative;
@@ -296,10 +316,6 @@ a {
 
   .topbar-left {
     @include opacity(0);
-  }
-
-  h1 a {
-    background-color: transparent;
   }
 }
 
