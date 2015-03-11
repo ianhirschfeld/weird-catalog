@@ -51,6 +51,14 @@ class CatalogItem < ActiveRecord::Base
     date_string.to_date.strftime(date_format)
   end
 
+  def affiliate_url
+    if self.url.include? 'amzn.com'
+      url + '?tag=weircata-20'
+    else
+      url
+    end
+  end
+
   private
 
   def get_remote_image

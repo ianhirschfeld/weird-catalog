@@ -1,6 +1,6 @@
 - content_for :title, @item.name
 .catalog-item-section.reveal
-  %a.catalog-item-image-link{href: @item.url, target: '_blank'}
+  %a.catalog-item-image-link{href: @item.affiliate_url, target: '_blank'}
     = image_tag @item.feature_image(:large), alt: @item.name, class: 'catalog-item-image-show'
   %h2 #{@item.name}
   - if @item.catalog_category
@@ -15,7 +15,7 @@
     #{@item.released_date_formatted}
   %h4 #{@item.description}
   %h5
-    %a{href: @item.url, target: '_blank'}
+    %a{href: @item.affiliate_url, target: '_blank'}
       Get Weird
       %span.icon-right-arrow
   %ul.catalog-item-social<>

@@ -4,7 +4,7 @@
     - @items.each do |item|
       %li.catalog-item-container<>
         .catalog-item-image{style: "background-image:url('#{item.feature_image(:large)}');"}
-        %a.catalog-item-external{href: item.url, target: '_blank'}<>
+        %a.catalog-item-external{href: item.affiliate_url, target: '_blank'}<>
           .catalog-item-overlay
           .catalog-item-info
             %h3 #{item.name}
