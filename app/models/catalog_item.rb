@@ -13,8 +13,8 @@ class CatalogItem < ActiveRecord::Base
       large: '-quality 80 -strip'
     }
 
-  before_save :get_remote_image,
-              :set_released_date
+  before_validation :set_released_date
+  before_save :get_remote_image
 
   validates_presence_of :creator,
                         :name,
