@@ -3,7 +3,9 @@
   = f.input :url, as: :string
   = f.input :description
   = f.input :creator, as: :string
-  = f.input :released_at, as: :date, html5: true
+  = f.input :released_year, as: :string
+  = f.input :released_month, as: :string
+  = f.input :released_day, as: :string
   = f.association :catalog_category
   %ul.list-reset.admin-catalog-item-image-upload
     - if item.feature_image.exists?

@@ -6,6 +6,8 @@ $ ->
   $infoSection = $('.info-section')
   $logoContainer = $('.topbar-right')
 
+  $('.reveal').removeClass 'reveal'
+
   $('.has-dropdown').each (i) ->
     $this = $(this)
     $trigger = $('.dropdown-trigger', $this)

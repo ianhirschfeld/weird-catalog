@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "MyText"
 description "MyText"
 url "MyText"
-released_at "2015-02-20 15:14:08"
+released_date "2015-02-20"
 category_id 1
   end
 

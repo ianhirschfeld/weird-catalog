@@ -13,13 +13,15 @@ class CatalogItem < ActiveRecord::Base
       large: '-quality 80 -strip'
     }
 
-  before_save :get_remote_image
+  before_save :get_remote_image,
+              :set_released_date
 
   validates_presence_of :creator,
                         :name,
                         :description,
                         :url,
-                        :released_at
+                        :released_date,
+                        :released_year
   validates :name, uniqueness: { case_sensitive: false }
   validates_attachment :feature_image, content_type: { content_type: /image/ }
 
@@ -34,6 +36,21 @@ class CatalogItem < ActiveRecord::Base
     end
   end
 
+  def released_date_formatted
+    if released_day && released_month
+      date_string = "#{released_year}-#{released_month}-#{released_day}"
+      date_format = '%B %-m, %Y'
+    elsif released_month
+      date_string = "#{released_year}-#{released_month}-01"
+      date_format = '%B, %Y'
+    else
+      date_string = "#{released_year}-01-01"
+      date_format = '%Y'
+    end
+
+    date_string.to_date.strftime(date_format)
+  end
+
   private
 
   def get_remote_image
@@ -41,6 +58,13 @@ class CatalogItem < ActiveRecord::Base
       io = open(URI.parse(upload_url))
       self.feature_image = io
     end
+  end
+
+  def set_released_date
+    date_str = "#{self.released_year}"
+    date_str += self.released_month ? "-#{self.released_month}" : '-01'
+    date_str += self.released_day ? "-#{self.released_day}" : '-01'
+    self.released_date = date_str.to_date
   end
 
 end

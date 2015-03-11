@@ -536,6 +536,8 @@ input[type=submit] {
   .catalog-item-container:hover &,
   .catalog-item-container:focus & {
     @include opacity(1);
+    @include transition-delay(0);
+
 
     &:hover,
     &:focus {
@@ -593,7 +595,10 @@ input[type=submit] {
   CATALOG ITEM SHOW
 =============================================================================*/
 .catalog-item-section {
+  @include opacity(1);
   @include translate(-50%, -50%);
+  @include transition(all $anim-speed-slow);
+  @include transition-delay($anim-speed);
   max-width: $catalog-item-max-width;
   position: absolute;
   top: 50%;
@@ -636,17 +641,6 @@ input[type=submit] {
     font-weight: $font-weight-medium;
   }
 
-  .catalog-item-image-link {
-    @include opacity(1);
-    @include transition(opacity $anim-speed);
-    margin-bottom: 2px;
-
-    &:hover,
-    &:focus {
-      @include opacity(.5);
-    }
-  }
-
   .catalog-item-social {
     @include opacity(1);
     margin-top: 8px;
@@ -664,12 +658,40 @@ input[type=submit] {
       }
     }
   }
+
+  &.reveal {
+    @include opacity(0);
+    @include translate(-50%, -60%);
+  }
 }
 
 .catalog-item-image-show {
+  @include translate(-50%, -50%);
+  @include transition(all $anim-speed);
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.catalog-item-image-link {
   @include border-radius(9px);
-  max-width: $image-max-width;
-  max-height: $image-max-height;
+  width: $image-max-width;
+  height: $image-max-height;
+  margin-bottom: $grid-unit-size;
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  &:hover,
+  &:focus {
+    .catalog-item-image-show {
+      width: 150%;
+      height: 150%;
+    }
+  }
 }
 
 /*=============================================================================

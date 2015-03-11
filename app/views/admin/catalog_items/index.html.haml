@@ -16,7 +16,7 @@
           %th Image
           %th Name
           %th URL
-          %th Date Added
+          %th Released
           %th Actions
       %tbody
         - @items.each do |item|
@@ -27,7 +27,7 @@
             %td #{item.name}
             %td
               %a{href: item.url, target: '_blank'} Visit
-            %td #{item.created_at.strftime("%Y-%m-%d")}
+            %td #{item.released_date_formatted}
             %td
               %a{href: edit_admin_catalog_item_path(item.id)} Edit
               |

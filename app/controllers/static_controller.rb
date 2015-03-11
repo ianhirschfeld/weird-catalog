@@ -19,7 +19,7 @@ class StaticController < ApplicationController
       'catalog_items.created_at DESC'
     when 'released_at'
       @current_sort_name = 'Release Date'
-      'catalog_items.released_at DESC'
+      'catalog_items.released_date DESC'
     when 'alphabetical'
       @current_sort_name = 'Alphabetical'
       'lower(catalog_items.name) ASC'

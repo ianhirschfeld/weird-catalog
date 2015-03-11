@@ -53,7 +53,9 @@ class Admin::CatalogItemsController < ProtectedController
       :url,
       :creator,
       :catalog_category_id,
-      :released_at,
+      :released_year,
+      :released_month,
+      :released_day,
       :feature_image,
       :upload_url
     )
