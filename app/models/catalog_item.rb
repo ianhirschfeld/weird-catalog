@@ -54,6 +54,8 @@ class CatalogItem < ActiveRecord::Base
   def affiliate_url
     if self.url.include? 'amzn.com'
       url + '?tag=weircata-20'
+    elsif self.url.include? 'apple.com'
+      url + '?at=1l3vwYz'
     else
       url
     end
