@@ -34,7 +34,8 @@ h1 {
 
   a {
     @include text-overflow;
-    @include transition(background-color $anim-speed-fast);
+    @include opacity(1);
+    @include transition(opacity $anim-speed-fast);
     width: 120px + $grid-unit-size-half * 2;
     padding: 0 $grid-unit-size-half;
     display: block;
@@ -43,14 +44,7 @@ h1 {
 
     &:hover,
     &:focus {
-      background-color: $dark-pink;
-    }
-
-    header.is-open & {
-      &:hover,
-      &:focus {
-        background-color: transparent;
-      }
+      @include opacity(.5);
     }
   }
 }
@@ -147,13 +141,15 @@ a {
     display: block;
   }
 
-  li a {
-    @include transition(background-color $anim-speed-fast);
+  .topbar-left > li > a,
+  .full-catalog {
+    @include opacity(1);
+    @include transition(opacity $anim-speed-fast);
     position: relative;
 
     &:hover,
     &:focus {
-      background-color: $dark-pink;
+      @include opacity(.5);
     }
   }
 
@@ -226,6 +222,15 @@ a {
   top: $grid-unit-size-twice;
   z-index: $z-index-level-4;
   background: $pink;
+
+  li {
+    @include transition(background-color $anim-speed-fast);
+
+    &:hover,
+    &:focus {
+      background-color: $dark-pink;
+    }
+  }
 }
 
 .has-dropdown.is-active {
@@ -286,6 +291,8 @@ a {
 }
 
 .info-triangle-up {
+  @include opacity(1);
+  @include transition(opacity $anim-speed);
   height: 20px;
   display: block;
 
@@ -304,7 +311,7 @@ a {
 
   &:hover,
   &:focus {
-    background: $dark-pink;
+    @include opacity(.5);
   }
 }
 
@@ -609,7 +616,7 @@ input[type=submit] {
   }
 
   h2 {
-    font-size: to-rem(20px);
+    font-size: to-rem(24px);
     line-height: $line-height-xsmall;
   }
 
@@ -639,6 +646,15 @@ input[type=submit] {
 
   strong {
     font-weight: $font-weight-medium;
+  }
+
+  p {
+    a {
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
   }
 
   .catalog-item-social {

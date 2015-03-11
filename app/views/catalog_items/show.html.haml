@@ -3,17 +3,17 @@
   %a.catalog-item-image-link{href: @item.affiliate_url, target: '_blank'}
     = image_tag @item.feature_image(:large), alt: @item.name, class: 'catalog-item-image-show'
   %h2 #{@item.name}
+  %h4 #{@item.description}
   - if @item.catalog_category
     %p
       %strong Category:
-      #{@item.catalog_category.name}
+      %a{href: catalog_category_path(@item.catalog_category)} #{@item.catalog_category.name}
   %p
     %strong Creator:
     #{@item.creator}
   %p
     %strong Released:
     #{@item.released_date_formatted}
-  %h4 #{@item.description}
   %h5
     %a{href: @item.affiliate_url, target: '_blank'}
       Get Weird

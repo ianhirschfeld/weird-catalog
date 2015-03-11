@@ -3,7 +3,7 @@
     %ul.list-reset.topbar-left
       %li
         %strong
-          %a{href: root_path}
+          %a.full-catalog{href: root_path}
             %span.icon-right-arrow
             Full Catalog
       - if signed_in? && current_user.admin?
