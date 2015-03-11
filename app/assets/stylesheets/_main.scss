@@ -129,7 +129,7 @@ a {
   height: $topbar-height;
   padding: 0 $grid-unit-size;
   background: $pink;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -463,10 +463,11 @@ input[type=submit] {
 
 .catalog-item-info {
   @include opacity(0);
-  @include translateY(-100%);
+  @include translateY(-25%);
   @include transition(all $anim-speed);
+  padding: 0 20px;
   position: absolute;
-  top: 50%;
+  top: 40px;
   left: 0;
   right: 0;
   z-index: $z-index-level-3;
@@ -475,6 +476,7 @@ input[type=submit] {
 
   h3 {
     font-size: to-rem(24px);
+    line-height: $info-line-height;
   }
 
   h4 {
@@ -505,30 +507,29 @@ input[type=submit] {
   .catalog-item-container:hover &,
   .catalog-item-container:focus & {
     @include opacity(1);
-    @include translateY(-50%);
+    @include translateY(0%);
   }
 }
 
 .catalog-item-internal {
   @include opacity(0);
-  @include rotate(-45deg);
   @include transition(opacity $anim-speed);
+  @include transition-delay($anim-speed);
   width: 0;
   height: 0;
   position: absolute;
-  top: -4px;
-  left: -19px;
+  top: 0;
+  left: 0;
   z-index: $z-index-level-2;
-  border-left: 30px solid transparent;
-  border-right: 30px solid transparent;
-  border-bottom: 30px solid $white;
+  border-top: 36px solid $white;
+  border-right: 36px solid transparent;
 
   .icon-right-arrow {
-    @include rotate(-90deg);
+    @include rotate(-135deg);
     display: block;
     position: absolute;
-    top: 4px;
-    left: -8px;
+    top: -38px;
+    left: 3px;
     color: $black;
   }
 
@@ -546,6 +547,7 @@ input[type=submit] {
 .catalog-item-social {
   @include opacity(0);
   @include transition(opacity $anim-speed);
+  @include transition-delay($anim-speed);
   margin: 0;
   padding: 0;
   position: absolute;
