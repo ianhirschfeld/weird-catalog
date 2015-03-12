@@ -1,27 +1,17 @@
-$ ->
-  $win = $(window)
-  $topbar = $('.topbar')
-  $toggleInfoTrigger = $('.toggle-info')
-  $infoContainer = $('.info-container')
-  $infoSection = $('.info-section')
-  $logoContainer = $('.topbar-right')
+$win = $(window)
+$topbar = $('.topbar')
+$toggleInfoTrigger = $('.toggle-info')
+$infoContainer = $('.info-container')
+$infoSection = $('.info-section')
+$logoContainer = $('.topbar-right')
+$logoContainerA = $('.topbar-right a')
+$blend = $('.blend')
+$hamburger = $('.hamburger')
 
+$ ->
   $('.reveal').removeClass 'reveal'
 
-  $('.has-dropdown').each (i) ->
-    $this = $(this)
-    $trigger = $('.dropdown-trigger', $this)
-    $dropdown = $('.dropdown', $this)
-
-    triggerWidth = $trigger.outerWidth()
-    dropdownWidth = $dropdown.outerWidth()
-
-    if triggerWidth > dropdownWidth
-      $trigger.width triggerWidth
-      $dropdown.width triggerWidth + parseInt($trigger.css('paddingLeft').replace('px', '')) * 2
-    else
-      $trigger.width dropdownWidth
-      $dropdown.width dropdownWidth + parseInt($trigger.css('paddingLeft').replace('px', '')) * 2
+  setupDropdowns()
 
   $('.dropdown-trigger').click (event) ->
     event.preventDefault()
@@ -38,11 +28,9 @@ $ ->
     $logoContainer.find('a').blur()
 
     if $topbar.hasClass 'is-open'
-      $topbar.height 36
-      $infoContainer.height 0
-      $logoContainer.css
-        top: 0
-        right: 18
+      $topbar.attr 'style', ''
+      $infoContainer.attr 'style', ''
+      $logoContainer.attr 'style', ''
       setTimeout ->
         $topbar.removeClass 'is-open'
       , 300
@@ -52,4 +40,34 @@ $ ->
       $infoContainer.height $infoSection.outerHeight()
       $logoContainer.css
         top: 6
-        right: ($win.outerWidth() / 2) + ($infoSection.outerWidth() / 2) - $logoContainer.outerWidth() + 5
+        right: $win.outerWidth() - $logoContainer.outerWidth() - $blend.position().left + parseInt($logoContainerA.css('paddingLeft').replace('px', ''))
+
+  $hamburger.click (event) ->
+    event.preventDefault()
+
+    $hamburger.blur()
+
+    if $topbar.hasClass 'is-menu-open'
+      $topbar.removeClass 'is-menu-open'
+    else
+      $topbar.addClass 'is-menu-open'
+      setupDropdowns()
+
+setupDropdowns = ->
+  $('.has-dropdown').each (i) ->
+    $this = $(this)
+    $trigger = $('.dropdown-trigger', $this)
+    $dropdown = $('.dropdown', $this)
+
+    $trigger.attr 'style', ''
+    $dropdown.attr 'style', ''
+
+    triggerWidth = $trigger.outerWidth()
+    dropdownWidth = $dropdown.outerWidth()
+
+    if triggerWidth > dropdownWidth
+      $trigger.width triggerWidth
+      $dropdown.width triggerWidth + parseInt($trigger.css('paddingLeft').replace('px', '')) * 2
+    else
+      $trigger.width dropdownWidth
+      $dropdown.width dropdownWidth + parseInt($trigger.css('paddingLeft').replace('px', '')) * 2

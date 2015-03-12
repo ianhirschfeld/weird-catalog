@@ -49,8 +49,8 @@
               %a{href: path} All
           - @categories.each do |category|
             - if @current_category.nil? || @current_category.slug != category.slug
+              - path = @current_sort.present? ? catalog_category_path(category, sortby: @current_sort) : catalog_category_path(category)
               %li
-                - path = @current_sort.present? ? catalog_category_path(category, sortby: @current_sort) : catalog_category_path(category)
                 %a{href: path} #{category.name}
       - if signed_in? && current_user.admin?
         %li
@@ -60,3 +60,50 @@
     .topbar-right
       %h1
         %a.toggle-info{href: '#'} Weird Catalog
+
+    %a.hamburger{href: '#'}<>
+      %span.hamburger-inner<>
+        %span.line1<>
+        %span.line2<>
+        %span.line3<>
+    %ul.list-reset.topbar-mobile
+      %li
+        %span Sort By:
+      %li.has-dropdown
+        %a.dropdown-trigger{href: '#'} #{@current_sort_name}
+        %ul.list-reset.dropdown
+          - if @current_category
+            - if @current_sort != ''
+              %li
+                %a{href: catalog_category_path(@current_category)} Date Added
+            - if @current_sort != 'released_at'
+              %li
+                %a{href: catalog_category_path(@current_category, sortby: 'released_at')} Release Date
+            - if @current_sort != 'alphabetical'
+              %li
+                %a{href: catalog_category_path(@current_category, sortby: 'alphabetical')} Alphabetical
+          - else
+            - if @current_sort != ''
+              %li
+                %a{href: root_path} Date Added
+            - if @current_sort != 'released_at'
+              %li
+                %a{href: root_path(sortby: 'released_at')} Release Date
+            - if @current_sort != 'alphabetical'
+              %li
+                %a{href: root_path(sortby: 'alphabetical')} Alphabetical
+    %ul.list-reset.topbar-mobile
+      %li
+        %span Category:
+      %li.has-dropdown.category-dropdown
+        %a.dropdown-trigger{href: '#'} #{@current_category ? @current_category.name : 'All'}
+        %ul.list-reset.dropdown
+          - if @current_category
+            - path = @current_sort.present? ? root_path(sortby: @current_sort) : root_path
+            %li
+              %a{href: path} All
+          - @categories.each do |category|
+            - if @current_category.nil? || @current_category.slug != category.slug
+              - path = @current_sort.present? ? catalog_category_path(category, sortby: @current_sort) : catalog_category_path(category)
+              %li
+                %a{href: path} #{category.name}

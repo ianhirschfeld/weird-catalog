@@ -315,6 +315,49 @@ a {
   }
 }
 
+.hamburger {
+  @include opacity(1);
+  @include transition(opacity $anim-speed);
+  width: 20px + $grid-unit-size;
+  height: $topbar-height;
+  padding: 0 $grid-unit-size-half;
+  display: none;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    @include opacity(.5);
+  }
+}
+
+.hamburger-inner {
+  @include translate(-50%, -50%);
+  width: 20px;
+  padding: 0 !important;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  .line1,
+  .line2,
+  .line3 {
+    height: 2px;
+    margin-bottom: 3px;
+    padding: 0 !important;
+    display: block;
+    background: $white;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.topbar-mobile {
+  display: none;
+}
+
 .topbar.is-open {
   overflow: hidden;
 
@@ -324,6 +367,41 @@ a {
 
   .topbar-left {
     @include opacity(0);
+  }
+}
+
+.topbar.is-menu-open {
+  height: auto;
+
+  .hamburger {
+    @include opacity(.5);
+  }
+
+  .topbar-mobile {
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+
+    > li {
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .has-dropdown {
+      position: relative;
+    }
+
+    &:last-child {
+      margin-bottom: $grid-unit-size;
+    }
+  }
+}
+
+.topbar.is-menu-open:not(.is-open) {
+  .topbar-right {
+    @include translateX(50%);
+    right: 50%
   }
 }
 
@@ -766,6 +844,34 @@ input[type=submit] {
 }
 
 @include respond-to('phone') {
+  .topbar {
+    height: $topbar-height;
+    position: static;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .topbar-left {
+    display: none;
+  }
+
+  .topbar-right {
+    right: 0;
+  }
+
+  .hamburger {
+    display: inline-block;
+  }
+
+  .info-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .page-content {
+    padding-top: 0;
+  }
+
   .catalog-item-container {
     width: 100%;
   }
