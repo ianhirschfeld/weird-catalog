@@ -1,7 +1,7 @@
 !!!
 %html
   = render 'shared/head'
-  %body
+  %body{class: yield(:body_class)}
     - if @item || @is_error_page
       = render 'shared/nav_show'
     - else

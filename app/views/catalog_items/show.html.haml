@@ -1,7 +1,8 @@
 - content_for :title, @item.name
+- content_for :body_class, 'is-show'
 .catalog-item-section.reveal
   %a.catalog-item-image-link{href: @item.affiliate_url, target: '_blank'}
-    = image_tag @item.feature_image(:large), alt: @item.name, class: 'catalog-item-image-show'
+    .catalog-item-image-show{style: "background-image:url('#{@item.feature_image(:large)}');"}
   %h2 #{@item.name}
   %h4 #{@item.description}
   - if @item.catalog_category

@@ -107,3 +107,9 @@
               - path = @current_sort.present? ? catalog_category_path(category, sortby: @current_sort) : catalog_category_path(category)
               %li
                 %a{href: path} #{category.name}
+    %ul.list-reset.topbar-mobile
+      - if signed_in? && current_user.admin?
+        %li
+          %a{href: admin_path} Admin Portal
+        %li
+          %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
