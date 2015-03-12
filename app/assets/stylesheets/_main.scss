@@ -690,6 +690,7 @@ input[type=submit] {
   @include translate(-50%, -50%);
   @include transition(all $anim-speed-slow);
   @include transition-delay($anim-speed);
+  width: 100%;
   max-width: $catalog-item-max-width;
   padding-bottom: $grid-unit-size;
   position: absolute;
@@ -887,16 +888,6 @@ input[type=submit] {
 
   .catalog-item-container {
     width: 100%;
-  }
-
-  .catalog-item-section {
-    @include translate(0, 0);
-    margin: 0 auto;
-    position: static;
-
-    &.reveal {
-      @include translate(0, 0);
-    }
   }
 }
 
