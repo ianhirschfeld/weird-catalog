@@ -550,7 +550,6 @@ input[type=submit] {
 }
 
 .catalog-item-image {
-  @include transition(all $anim-speed);
   @include translateY(-50%);
   width: 100%;
   height: 100%;
@@ -563,9 +562,12 @@ input[type=submit] {
   background-position: center center;
   background-size: cover;
 
+  html:not(.touch) & {
+    @include transition(all $anim-speed);
+  }
+
   html:not(.touch) .catalog-item-container:hover &,
-  html:not(.touch) .catalog-item-container:focus &,
-  html.touch .catalog-item-container.is-active & {
+  html:not(.touch) .catalog-item-container:focus & {
     width: 150%;
     height: 150%;
     margin-left: -75%;
@@ -585,7 +587,6 @@ input[type=submit] {
 .catalog-item-info {
   @include opacity(0);
   @include translateY(-25%);
-  @include transition(all $anim-speed);
   padding: 0 $grid-unit-size-half;
   position: absolute;
   top: 44px;
@@ -594,6 +595,10 @@ input[type=submit] {
   z-index: $z-index-level-3;
   text-align: center;
   color: $white;
+
+  html:not(.touch) & {
+    @include transition(all $anim-speed);
+  }
 
   h3 {
     font-size: to-rem(20px);
@@ -609,9 +614,12 @@ input[type=submit] {
 
   h5 {
     @include opacity(1);
-    @include transition(opacity $anim-speed);
     font-size: to-rem(18px);
     font-weight: $font-weight-bold;
+
+    html:not(.touch) & {
+      @include transition(opacity $anim-speed);
+    }
 
     &:hover,
     &:focus {
@@ -635,8 +643,6 @@ input[type=submit] {
 
 .catalog-item-internal {
   @include opacity(0);
-  @include transition(opacity $anim-speed);
-  @include transition-delay($anim-speed);
   width: 0;
   height: 0;
   position: absolute;
@@ -645,6 +651,11 @@ input[type=submit] {
   z-index: $z-index-level-2;
   border-top: 36px solid $white;
   border-right: 36px solid transparent;
+
+  html:not(.touch) & {
+    @include transition(opacity $anim-speed);
+    @include transition-delay($anim-speed);
+  }
 
   .icon-right-arrow {
     @include rotate(-135deg);
@@ -669,8 +680,6 @@ input[type=submit] {
 
 .catalog-item-social {
   @include opacity(0);
-  @include transition(opacity $anim-speed);
-  @include transition-delay($anim-speed);
   margin: 0;
   padding: 0;
   position: absolute;
@@ -679,6 +688,11 @@ input[type=submit] {
   z-index: $z-index-level-2;
   list-style: none;
   line-height: 1;
+
+  html:not(.touch) & {
+    @include transition(opacity $anim-speed);
+    @include transition-delay($anim-speed);
+  }
 
   li {
     display: inline-block;
@@ -690,8 +704,11 @@ input[type=submit] {
 
   a {
     @include opacity(1);
-    @include transition(opacity $anim-speed);
     color: $white;
+
+    html:not(.touch) & {
+      @include transition(opacity $anim-speed);
+    }
   }
 
   html:not(.touch) .catalog-item-container:hover &,
@@ -827,12 +844,14 @@ input[type=submit] {
   position: relative;
   overflow: hidden;
 
-  &:hover,
-  &:focus {
-    .catalog-item-image-show {
-      width: 150%;
-      height: 150%;
-      margin-left: -75%;
+  html:not(.touch) & {
+    &:hover,
+    &:focus {
+      .catalog-item-image-show {
+        width: 150%;
+        height: 150%;
+        margin-left: -75%;
+      }
     }
   }
 }
