@@ -35,16 +35,19 @@ h1 {
   a {
     @include text-overflow;
     @include opacity(1);
-    @include transition(opacity $anim-speed-fast);
     width: 120px + $grid-unit-size-half * 2;
     padding: 0 $grid-unit-size-half;
     display: block;
     background: image-url('weird_catalog_logo.svg') no-repeat center center;
     background-size: 120px;
 
-    &:hover,
-    &:focus {
-      @include opacity(.5);
+    html:not(.touch) & {
+      @include transition(opacity $anim-speed-fast);
+
+      &:hover,
+      &:focus {
+        @include opacity(.5);
+      }
     }
   }
 }
@@ -113,14 +116,13 @@ a {
 }
 
 .page-content {
-  padding-top: $topbar-height;
+  margin-top: $topbar-height;
 }
 
 /*=============================================================================
   HEADER
 =============================================================================*/
 .topbar {
-  @include transition(height $anim-speed);
   height: $topbar-height;
   padding: 0 $grid-unit-size;
   background: $pink;
@@ -129,6 +131,10 @@ a {
   left: 0;
   right: 0;
   z-index: $z-index-level-5;
+
+  html:not(.touch) & {
+    @include transition(height $anim-speed);
+  }
 
   nav {
     @include alt-clearfix;
@@ -144,12 +150,15 @@ a {
   .topbar-left > li > a,
   .full-catalog {
     @include opacity(1);
-    @include transition(opacity $anim-speed-fast);
     position: relative;
 
-    &:hover,
-    &:focus {
-      @include opacity(.5);
+    html:not(.touch) & {
+      @include transition(opacity $anim-speed-fast);
+
+      &:hover,
+      &:focus {
+        @include opacity(.5);
+      }
     }
   }
 
@@ -169,8 +178,6 @@ a {
 }
 
 .topbar-left {
-  @include opacity(1);
-  @include transition(opacity $anim-speed);
   float: left;
 
   > li {
@@ -186,10 +193,13 @@ a {
 }
 
 .topbar-right {
-  @include transition(all $anim-speed);
   position: absolute;
   top: 0;
   right: $grid-unit-size;
+
+  html:not(.touch) & {
+    @include transition(all $anim-speed);
+  }
 }
 
 .dropdown-trigger {
@@ -224,7 +234,9 @@ a {
   background: $pink;
 
   li {
-    @include transition(background-color $anim-speed-fast);
+    html:not(.touch) & {
+      @include transition(background-color $anim-speed-fast);
+    }
 
     &:hover,
     &:focus {
@@ -241,11 +253,14 @@ a {
 
 .info-container {
   @include opacity(0);
-  @include transition(all $anim-speed);
   max-width: $info-section-max-width;
   height: 0;
   margin: 0 auto;
   overflow: hidden;
+
+  html:not(.touch) & {
+    @include transition(all $anim-speed);
+  }
 }
 
 .info-section {
@@ -292,9 +307,12 @@ a {
 
 .info-triangle-up {
   @include opacity(1);
-  @include transition(opacity $anim-speed);
   height: 20px;
   display: block;
+
+  html:not(.touch) & {
+    @include transition(opacity $anim-speed-fast);
+  }
 
   &:after {
     width: 0;
@@ -317,12 +335,15 @@ a {
 
 .hamburger {
   @include opacity(1);
-  @include transition(opacity $anim-speed);
   width: 20px + $grid-unit-size;
   height: $topbar-height;
   padding: 0 $grid-unit-size-half;
   display: none;
   position: relative;
+
+  html:not(.touch) & {
+    @include transition(opacity $anim-speed-fast);
+  }
 
   &:hover,
   &:focus {
@@ -380,7 +401,6 @@ body.is-show,
 
   .topbar-mobile {
     margin-bottom: 10px;
-    display: block;
     text-align: center;
 
     > li {
@@ -396,6 +416,12 @@ body.is-show,
     &:last-child {
       margin-bottom: $grid-unit-size;
     }
+  }
+}
+
+.topbar.is-menu-open {
+  .topbar-mobile {
+    display: block;
   }
 }
 
@@ -516,8 +542,9 @@ input[type=submit] {
   left: 0;
   z-index: $z-index-level-1;
 
-  .catalog-item-container:hover &,
-  .catalog-item-container:focus & {
+  html:not(.touch) .catalog-item-container:hover &,
+  html:not(.touch) .catalog-item-container:focus &,
+  html.touch .catalog-item-container.is-active & {
     @include opacity(1);
   }
 }
@@ -536,8 +563,9 @@ input[type=submit] {
   background-position: center center;
   background-size: cover;
 
-  .catalog-item-container:hover &,
-  .catalog-item-container:focus & {
+  html:not(.touch) .catalog-item-container:hover &,
+  html:not(.touch) .catalog-item-container:focus &,
+  html.touch .catalog-item-container.is-active & {
     width: 150%;
     height: 150%;
     margin-left: -75%;
@@ -560,7 +588,7 @@ input[type=submit] {
   @include transition(all $anim-speed);
   padding: 0 $grid-unit-size-half;
   position: absolute;
-  top: 40px;
+  top: 44px;
   left: 0;
   right: 0;
   z-index: $z-index-level-3;
@@ -597,8 +625,9 @@ input[type=submit] {
     }
   }
 
-  .catalog-item-container:hover &,
-  .catalog-item-container:focus & {
+  html:not(.touch) .catalog-item-container:hover &,
+  html:not(.touch) .catalog-item-container:focus &,
+  html.touch .catalog-item-container.is-active & {
     @include opacity(1);
     @include translateY(0%);
   }
@@ -626,8 +655,9 @@ input[type=submit] {
     color: $black;
   }
 
-  .catalog-item-container:hover &,
-  .catalog-item-container:focus & {
+  html:not(.touch) .catalog-item-container:hover &,
+  html:not(.touch) .catalog-item-container:focus &,
+  html.touch .catalog-item-container.is-active & {
     @include opacity(1);
 
     &:hover,
@@ -664,8 +694,9 @@ input[type=submit] {
     color: $white;
   }
 
-  .catalog-item-container:hover &,
-  .catalog-item-container:focus & {
+  html:not(.touch) .catalog-item-container:hover &,
+  html:not(.touch) .catalog-item-container:focus &,
+  html.touch .catalog-item-container.is-active & {
     @include opacity(1);
 
     a {
@@ -698,11 +729,12 @@ input[type=submit] {
   left: 50%;
   text-align: center;
 
-  h2, h4, p {
+  h4, p {
     margin-bottom: 8px;
   }
 
   h2 {
+    margin-bottom: 14px;
     font-size: to-rem(24px);
     line-height: $line-height-xsmall;
   }
@@ -770,7 +802,6 @@ input[type=submit] {
 
 .catalog-item-image-show {
   @include translateY(-50%);
-  @include transition(all $anim-speed);
   width: 100%;
   height: 100%;
   margin-left: -50%;
@@ -781,6 +812,10 @@ input[type=submit] {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  html:not(.touch) & {
+    @include transition(all $anim-speed);
+  }
 }
 
 .catalog-item-image-link {
@@ -877,17 +912,35 @@ input[type=submit] {
     display: inline-block;
   }
 
+  body.is-show {
+    .topbar-mobile {
+      display: block;
+    }
+  }
+
   .info-container {
     padding-left: 10px;
     padding-right: 10px;
   }
 
   .page-content {
-    padding-top: 0;
+    margin-top: 0;
   }
 
   .catalog-item-container {
     width: 100%;
+  }
+
+  html.touch {
+    .catalog-item-section {
+      @include translate(0, 0);
+      margin: 0 auto;
+      position: static;
+
+      &.reveal {
+        @include translate(0, 0);
+      }
+    }
   }
 }
 

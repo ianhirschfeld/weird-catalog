@@ -16,11 +16,15 @@ $ ->
   $('.dropdown-trigger').click (event) ->
     event.preventDefault()
 
-  $('.dropdown-trigger').mouseenter ->
-    $(this).parent().addClass 'is-active'
+  if Modernizr.touch
+    $('.dropdown-trigger').click (event) ->
+      $(this).parent().toggleClass 'is-active'
+  else
+    $('.dropdown-trigger').mouseenter ->
+      $(this).parent().addClass 'is-active'
 
-  $('.has-dropdown').mouseleave ->
-    $(this).removeClass 'is-active'
+    $('.has-dropdown').mouseleave ->
+      $(this).removeClass 'is-active'
 
   $toggleInfoTrigger.click (event) ->
     event.preventDefault()
@@ -52,6 +56,17 @@ $ ->
     else
       $topbar.addClass 'is-menu-open'
       setupDropdowns()
+
+  $('.catalog-item-container a').click (event) ->
+    if Modernizr.touch
+      $currentActive = $('.catalog-item-container.is-active')
+      $container = $(this).closest('.catalog-item-container')
+      if !$container.hasClass 'is-active'
+        event.preventDefault()
+        $container.addClass 'is-active'
+      else
+        $container.removeClass 'is-active'
+      $currentActive.removeClass 'is-active'
 
 setupDropdowns = ->
   $('.has-dropdown').each (i) ->
