@@ -11,6 +11,7 @@ $hamburger = $('.hamburger')
 $ ->
   $('.reveal').removeClass 'reveal'
 
+  $win.resize $.throttle(250, setupDropdowns)
   setupDropdowns()
 
   $('.dropdown-trigger').click (event) ->
