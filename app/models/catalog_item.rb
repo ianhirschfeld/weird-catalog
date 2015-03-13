@@ -39,7 +39,7 @@ class CatalogItem < ActiveRecord::Base
   def released_date_formatted
     if released_day && released_month
       date_string = "#{released_year}-#{released_month}-#{released_day}"
-      date_format = '%B %-m, %Y'
+      date_format = '%B %-d, %Y'
     elsif released_month
       date_string = "#{released_year}-#{released_month}-01"
       date_format = '%B, %Y'
