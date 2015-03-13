@@ -38,8 +38,12 @@ h1 {
     width: 120px + $grid-unit-size-half * 2;
     padding: 0 $grid-unit-size-half;
     display: block;
-    background: image-url('weird_catalog_logo.svg') no-repeat center center;
+    background: image-url('weird_catalog_logo.svg') no-repeat center 11px;
     background-size: 120px;
+
+    html.touch & {
+      background-position: center 12px;
+    }
 
     html:not(.touch) & {
       @include transition(opacity $anim-speed-fast);
@@ -343,11 +347,11 @@ a {
 
   html:not(.touch) & {
     @include transition(opacity $anim-speed-fast);
-  }
 
-  &:hover,
-  &:focus {
-    @include opacity(.5);
+    &:hover,
+    &:focus {
+      @include opacity(.5);
+    }
   }
 }
 
@@ -938,6 +942,10 @@ input[type=submit] {
   }
 
   body.is-show {
+    .topbar {
+      position: relative;
+    }
+
     .topbar-mobile {
       display: block;
     }

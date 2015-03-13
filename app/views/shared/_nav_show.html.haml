@@ -1,4 +1,16 @@
 %header.topbar
+  .info-container
+    .info-section
+      %article
+        %span.blend Weird Catalog
+        is a curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.
+      %strong Get inspired. Get weird.
+      %p
+        A project of
+        %a{href: 'http://thesoapcollective.com', target: '_blank'} The Soap Collective
+      %p.info-copyright All images are the property of their respective copyright holders. All other rights reserved, The Soap Collective &copy; #{Time.now.year}.
+      %a.info-email-us{href: "mailto:get@weirdcatalog.com?subject=Let's%20get%20weird!"} Send us weird stuff!
+      %a.toggle-info.info-triangle-up{href: '#'}
   %nav
     %ul.list-reset.topbar-left
       %li
@@ -13,7 +25,7 @@
           %a{href: sign_out_path, data: {method: 'delete'}} Sign Out
     .topbar-right
       %h1
-        %a{href: root_path} Weird Catalog
+        %a.toggle-info{href: root_path} Weird Catalog
 
     %ul.list-reset.topbar-mobile
       %li

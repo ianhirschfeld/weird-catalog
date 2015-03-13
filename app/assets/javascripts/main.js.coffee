@@ -43,7 +43,7 @@ $ ->
       $topbar.height $infoSection.outerHeight()
       $infoContainer.height $infoSection.outerHeight()
       $logoContainer.css
-        top: 6
+        top: 5
         right: $win.outerWidth() - $logoContainer.outerWidth() - $blend.position().left + parseInt($logoContainerA.css('paddingLeft').replace('px', ''))
 
   $hamburger.click (event) ->
