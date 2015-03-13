@@ -619,11 +619,11 @@ input[type=submit] {
 
     html:not(.touch) & {
       @include transition(opacity $anim-speed);
-    }
 
-    &:hover,
-    &:focus {
-      @include opacity(.5);
+      &:hover,
+      &:focus {
+        @include opacity(.5);
+      }
     }
 
     .icon-right-arrow {
