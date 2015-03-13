@@ -15,7 +15,8 @@
         %tr
           %th Image
           %th Name
-          %th URL
+          %th Int URL
+          %th Ext URL
           %th Released
           %th Actions
       %tbody
@@ -25,6 +26,8 @@
               %a{href: edit_admin_catalog_item_path(item.id)}
                 = image_tag item.feature_image.url(:large), class: 'admin-catalog-item-image'
             %td #{item.name}
+            %td
+              %a{href: catalog_item_path(item), target: '_blank'} Go to item
             %td
               %a{href: item.affiliate_url, target: '_blank'} Visit
             %td #{item.released_date_formatted}

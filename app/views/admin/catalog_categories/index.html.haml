@@ -15,6 +15,7 @@
         %tr
           %th Name
           %th Items
+          %th Visit
           %th Actions
       %tbody
         - @categories.each do |category|
@@ -22,6 +23,8 @@
             %td
               %a{href: edit_admin_catalog_category_path(category.id)} #{category.name}
             %td #{category.catalog_items.count}
+            %td
+              %a{href: catalog_category_path(category)} Go to category
             %td
               %a{href: edit_admin_catalog_category_path(category.id)} Edit
               |
