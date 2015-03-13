@@ -899,6 +899,12 @@ input[type=submit] {
 /*=============================================================================
   RESPONSIVENESS
 =============================================================================*/
+@include respond-to('desktop-large') {
+  .catalog-item-container {
+    width: 20%;
+  }
+}
+
 @include respond-to('desktop') {
   .catalog-item-container {
     width: percentage(1 / 3);
