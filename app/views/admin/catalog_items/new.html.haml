@@ -7,5 +7,6 @@
     %a{href: new_admin_catalog_item_path} New
 
 .admin-section
-  %h2 New Catalog Item
-  = render 'form', item: @item
+  .admin-catalog-item-section
+    %h2 New Item
+    = render 'form', item: @item

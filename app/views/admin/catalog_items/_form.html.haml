@@ -1,19 +1,29 @@
 = simple_form_for [:admin, item], html: {multipart: true} do |f|
-  = f.input :name, as: :string
-  = f.input :url, as: :string
-  = f.input :description
-  = f.input :creator, as: :string
-  = f.input :released_year, as: :string
-  = f.input :released_month, as: :string
-  = f.input :released_day, as: :string
-  = f.association :catalog_category
-  %ul.list-reset.admin-catalog-item-image-upload
-    - if item.feature_image.exists?
-      %li
-        = image_tag item.feature_image.url(:large), class: 'admin-catalog-item-image'
-    %li
-      = f.input :feature_image, as: :file
-      = f.input :upload_url, as: :string
+  .admin-catalog-item-image-wrapper{class: "#{'has-image' if item.feature_image.exists?}"}
+    %a.admin-catalog-item-image-container{href: '#'}
+      - if item.feature_image.exists?
+        .admin-catalog-item-image{style: "background-image:url('#{item.feature_image(:large)}');"}
+      - else
+        .admin-catalog-item-image
+      .admin-catalog-item-image-overlay
+        .icon-camera
+    = f.input :feature_image, as: :file, wrapper_html: {class: 'hide'}
+    = f.input :upload_url, as: :string, label: false, input_html: {placeholder: 'Image URL'}
+
+  = f.input :url, as: :string, label: false, input_html: {placeholder: 'Affiliate URL'}
+  = f.input :name, as: :string, label: false, input_html: {placeholder: 'Title'}
+  = f.input :description, label: false, input_html: {placeholder: 'Description (roughly 100 characers)'}
+  = f.association :catalog_category, label: 'Category:', include_blank: 'None'
+  = f.input :creator, as: :string, label: 'Creator:', input_html: {placeholder: 'Name'}
+
+  .admin-catalog-item-date
+    = select_month item.released_month, include_blank: true
+    = select_day item.released_day, include_blank: true
+    = select_year item.released_year, start_year: Date.today.year, end_year: Date.today.year-100, include_blank: true
+    = f.input :released_year, as: :string, wrapper_html: {class: 'hide'}
+    = f.input :released_month, as: :string, wrapper_html: {class: 'hide'}
+    = f.input :released_day, as: :string, wrapper_html: {class: 'hide'}
+
   = f.button :submit
   &nbsp;&nbsp;&nbsp;
   %a.button{href: admin_catalog_items_path} Cancel

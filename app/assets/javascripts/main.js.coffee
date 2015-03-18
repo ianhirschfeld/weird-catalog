@@ -30,8 +30,6 @@ $ ->
   $toggleInfoTrigger.click (event) ->
     event.preventDefault()
 
-    $logoContainer.find('a').blur()
-
     if $topbar.hasClass 'is-open'
       $topbar.attr 'style', ''
       $infoContainer.attr 'style', ''
@@ -49,8 +47,6 @@ $ ->
 
   $hamburger.click (event) ->
     event.preventDefault()
-
-    $hamburger.blur()
 
     if $topbar.hasClass 'is-menu-open'
       $topbar.removeClass 'is-menu-open'
