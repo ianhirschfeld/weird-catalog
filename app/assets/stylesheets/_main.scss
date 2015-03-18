@@ -48,8 +48,7 @@ h1 {
     html:not(.touch) & {
       @include transition(opacity $anim-speed-fast);
 
-      &:hover,
-      &:focus {
+      &:hover {
         @include opacity(.5);
       }
     }
@@ -121,6 +120,10 @@ a {
 
 .page-content {
   margin-top: $topbar-height;
+}
+
+.hide {
+  display: none;
 }
 
 /*=============================================================================
@@ -348,8 +351,7 @@ a {
   html:not(.touch) & {
     @include transition(opacity $anim-speed-fast);
 
-    &:hover,
-    &:focus {
+    &:hover {
       @include opacity(.5);
     }
   }
@@ -443,67 +445,21 @@ body.is-show {
 }
 
 /*=============================================================================
-  ADMIN
-=============================================================================*/
-.admin-section {
-  max-width: $admin-page-width;
-  margin: 0 auto;
-
-  a {
-    &:hover,
-    &:focus {
-      text-decoration: underline;
-    }
-  }
-}
-
-.admin-table {
-  width: 100%;
-
-  thead {
-    text-align: left;
-    border-bottom: 1px solid $white;
-  }
-
-  th, td {
-    padding: $grid-unit-size-half;
-  }
-
-  tbody tr:nth-child(odd) {
-    background-color: $dark-pink;
-  }
-}
-
-.admin-catalog-item-image-cell {
-  width: 360px;
-}
-
-.admin-catalog-item-image {
-  width: 100%;
-  max-width: 360px;
-}
-
-.admin-catalog-item-image-upload {
-  margin-bottom: $grid-unit-size;
-
-  li {
-    display: inline-block;
-    vertical-align: top;
-  }
-}
-
-/*=============================================================================
   FORMS
 =============================================================================*/
 input:not([type=submit]),
 textarea {
+  @include input-placeholder {
+    color: rgba(255,255,255,.5);
+  }
   width: 100%;
   display: block;
-  color: $black;
+  background: none;
+  border: none;
 }
 
 textarea {
-  height: 50px;
+  height: 60px;
 }
 
 input[type=submit] {
@@ -512,7 +468,7 @@ input[type=submit] {
 }
 
 .input {
-  margin-bottom: $grid-unit-size;
+  margin-bottom: $grid-unit-size-half;
 
   label {
     margin-bottom: 5px;

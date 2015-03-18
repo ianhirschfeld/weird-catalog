@@ -7,6 +7,12 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "85017ab6ca074831a8de771b40e9640c",
+      "css": "camera",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
       "uid": "1a90b06af8614b12d8c8a5b90cc19ab3",
       "css": "right-arrow",
       "code": 59394,

@@ -9,4 +9,5 @@ Clearance.configure do |config|
   address.display_name = 'Weird Catalog'
   config.mailer_sender = address.format
   config.redirect_url = '/admin'
+  config.routes = false
 end

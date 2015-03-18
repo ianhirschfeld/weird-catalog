@@ -7,5 +7,8 @@
     %a{href: edit_admin_catalog_item_path} Edit
 
 .admin-section
-  %h2 Edit Catalog Item: #{@item.name}
-  = render 'form', item: @item
+  .admin-catalog-item-section
+    %h2
+      Editing:
+      %a{href: catalog_item_path(@item)} #{@item.name}
+    = render 'form', item: @item

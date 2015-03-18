@@ -27,6 +27,8 @@
   %title #{yield(:title) + ' | ' if yield(:title).present?}Weird Catalog
 
   = stylesheet_link_tag 'application'
+  - if @is_admin_page
+    = stylesheet_link_tag 'admin'
   = csrf_meta_tags
   = javascript_include_tag :modernizr
   %script{src: '//use.typekit.net/tla7mpq.js', type: 'text/javascript'}
