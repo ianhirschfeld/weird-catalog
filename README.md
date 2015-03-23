@@ -1,2 +1,4 @@
 # weird-catalog
-A site for the discovery of cool "weird" things in media.
+A curated collection of high-quality games, movies, TV, music, books, comics, and internet stuff. Celebrate the colorful, creative, and strange.
+
+**Get inspired. Get weird.**
