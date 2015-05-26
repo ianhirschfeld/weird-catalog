@@ -27,6 +27,8 @@ class CatalogItem < ActiveRecord::Base
 
   belongs_to :catalog_category
 
+  scope :published, -> { where(enabled: true) }
+
   def description_truncated(limit=140)
     if description.length > limit
       # -4 because of ellipses and zero-based index

@@ -1,5 +1,7 @@
 class Admin::CatalogItemsController < ProtectedController
 
+  include ApplicationHelper
+
   before_action :set_is_admin_page
   before_action :load_model, only: [:edit, :update, :destroy]
 
@@ -18,6 +20,7 @@ class Admin::CatalogItemsController < ProtectedController
     @item = CatalogItem.new catalog_item_params
 
     if @item.save
+      CatalogItemService.send_to_buffer(@item) if @item.enabled? && @item.send_to_buffer?
       redirect_to admin_catalog_items_path, notice: 'Catalog item successfully created!'
     else
       render template: 'admin/catalog_items/new'
@@ -26,6 +29,7 @@ class Admin::CatalogItemsController < ProtectedController
 
   def update
     if @item.update_attributes(catalog_item_params)
+      CatalogItemService.send_to_buffer(@item) if @item.enabled? && @item.send_to_buffer?
       redirect_to admin_catalog_items_path, notice: 'Catalog item successfully updated!'
     else
       render template: 'admin/catalog_items/edit'
@@ -57,7 +61,9 @@ class Admin::CatalogItemsController < ProtectedController
       :released_month,
       :released_day,
       :feature_image,
-      :upload_url
+      :upload_url,
+      :enabled,
+      :send_to_buffer
     )
   end
 

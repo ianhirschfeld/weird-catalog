@@ -34,7 +34,7 @@ class StaticController < ApplicationController
       ''
     end
 
-    @items = CatalogItem.eager_load(:catalog_category).where(where).order(order)
+    @items = CatalogItem.published.eager_load(:catalog_category).where(where).order(order)
   end
 
 end
