@@ -1,11 +1,14 @@
 module ApplicationHelper
 
+  include Routing
+
   def facebook_share_url(item)
     "http://www.facebook.com/share.php?u=#{catalog_item_url(item)}"
   end
 
   def facebook_share_text(item)
-    "#{item.description} #GetWeird #{catalog_item_url(item)}"
+    generator = UrlGenerator.new
+    "#{item.description} #GetWeird #{generator.catalog_item_url(item)}"
   end
 
   def twitter_share_url(item)
@@ -16,32 +19,8 @@ module ApplicationHelper
   end
 
   def twitter_share_text(item)
-    "#{item.description_truncated(140 - 23 - 10)} #GetWeird #{catalog_item_url(item)}"
-  end
-
-  def send_item_to_buffer(item)
-    buffer = Buffer::Client.new ENV['BUFFER_ACCESS_TOKEN']
-    profiles = buffer.profiles
-    pending = buffer.updates_by_profile_id profiles.first[:id], status: 'pending'
-    data = {body: {shorten: true}}
-
-    # 10 posts is the max allowed in queue for free accounts.
-    if pending.total < 10
-      profiles.each do |profile|
-        case profile[:service]
-        when 'facebook'
-          data[:body][:profile_ids] = [profile[:id]]
-          data[:body][:text] = facebook_share_text(item)
-          buffer.create_update data
-        when 'twitter'
-          data[:body][:profile_ids] = [profile[:id]]
-          data[:body][:text] = twitter_share_text(item)
-          buffer.create_update data
-        end
-      end
-
-      item.update_attributes send_to_buffer: false
-    end
+    generator = UrlGenerator.new
+    "#{item.description_truncated(140 - 23 - 10)} #GetWeird #{generator.catalog_item_url(item)}"
   end
 
 end

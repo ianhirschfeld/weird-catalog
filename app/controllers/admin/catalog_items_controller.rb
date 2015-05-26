@@ -20,7 +20,7 @@ class Admin::CatalogItemsController < ProtectedController
     @item = CatalogItem.new catalog_item_params
 
     if @item.save
-      send_item_to_buffer(@item) if @item.enabled? && @item.send_to_buffer?
+      CatalogItemService.send_to_buffer(@item) if @item.enabled? && @item.send_to_buffer?
       redirect_to admin_catalog_items_path, notice: 'Catalog item successfully created!'
     else
       render template: 'admin/catalog_items/new'
@@ -29,7 +29,7 @@ class Admin::CatalogItemsController < ProtectedController
 
   def update
     if @item.update_attributes(catalog_item_params)
-      send_item_to_buffer(@item) if @item.enabled? && @item.send_to_buffer?
+      CatalogItemService.send_to_buffer(@item) if @item.enabled? && @item.send_to_buffer?
       redirect_to admin_catalog_items_path, notice: 'Catalog item successfully updated!'
     else
       render template: 'admin/catalog_items/edit'
