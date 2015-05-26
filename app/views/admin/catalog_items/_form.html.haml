@@ -24,6 +24,10 @@
     = f.input :released_month, as: :string, wrapper_html: {class: 'hide'}
     = f.input :released_day, as: :string, wrapper_html: {class: 'hide'}
 
+  .admin-catalog-item-backend
+    = f.input :enabled, label: 'Enable?'
+    = f.input :send_to_buffer, label: 'Send to Buffer?'
+
   = f.button :submit
   &nbsp;&nbsp;&nbsp;
   %a.button{href: admin_catalog_items_path} Cancel

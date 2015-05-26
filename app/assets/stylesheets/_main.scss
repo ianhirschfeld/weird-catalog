@@ -447,7 +447,7 @@ body.is-show {
 /*=============================================================================
   FORMS
 =============================================================================*/
-input:not([type=submit]),
+input:not([type=submit]):not([type=checkbox]),
 textarea {
   @include input-placeholder {
     color: rgba(255,255,255,.5);
@@ -460,6 +460,10 @@ textarea {
 
 textarea {
   height: 60px;
+}
+
+input[type=checkbox] {
+  margin-right: $grid-unit-size-half;
 }
 
 input[type=submit] {

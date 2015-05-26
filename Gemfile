@@ -5,6 +5,7 @@ gem 'rails', '4.2.0'
 
 gem 'awesome_print'
 gem 'aws-sdk', '< 2.0'
+gem 'buffer'
 gem 'clearance'
 gem 'coffee-rails'
 gem 'compass-rails'

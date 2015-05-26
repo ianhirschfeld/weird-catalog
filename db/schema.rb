@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311051316) do
+ActiveRecord::Schema.define(version: 20150526001915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20150311051316) do
     t.text     "url"
     t.date     "released_date"
     t.integer  "catalog_category_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "feature_image_file_name"
     t.string   "feature_image_content_type"
     t.integer  "feature_image_file_size"
@@ -42,9 +42,13 @@ ActiveRecord::Schema.define(version: 20150311051316) do
     t.integer  "released_year"
     t.integer  "released_month"
     t.integer  "released_day"
+    t.boolean  "enabled",                    default: true
+    t.boolean  "send_to_buffer",             default: false
   end
 
   add_index "catalog_items", ["catalog_category_id"], name: "index_catalog_items_on_catalog_category_id", using: :btree
+  add_index "catalog_items", ["enabled"], name: "index_catalog_items_on_enabled", using: :btree
+  add_index "catalog_items", ["send_to_buffer"], name: "index_catalog_items_on_send_to_buffer", using: :btree
   add_index "catalog_items", ["slug"], name: "index_catalog_items_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
